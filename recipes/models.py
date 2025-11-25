@@ -1,3 +1,29 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
-# Create your models here.
+class Recipe(models.Model):
+    CATEGORY_CHOICES = [
+        ('mains', 'Mains'),
+        ('desserts', 'Desserts'),
+        ('vegan', 'Vegan'),
+        ('vegetarian', 'Vegetarian'),
+        ('snacks', 'Snacks'),
+        ('drinks', 'Drinks'),
+    ]
+
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    ingredients = models.TextField(help_text='One per line')
+    steps = models.TextField(help_text='One step per line')
+    image = models.ImageField(upload_to='recipes/', blank=True, null=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    cook_time_minutes = models.PositiveIntegerField(blank=True, null=True)
+    created_by = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='recipes')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.title
