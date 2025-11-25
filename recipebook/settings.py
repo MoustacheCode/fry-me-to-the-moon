@@ -52,10 +52,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'recipebook.urls'
 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # global templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +70,9 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = 'recipe_list'
+LOGOUT_REDIRECT_URL = 'recipe_list'
 
 WSGI_APPLICATION = 'recipebook.wsgi.application'
 

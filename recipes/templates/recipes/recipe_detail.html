@@ -27,3 +27,11 @@
     </div>
 </article>
 {% endblock %}
+
+{% if user.is_authenticated and user == recipe.created_by %}
+  <div class="mt-3 d-flex gap-2">
+    <a href="{% url 'recipe_edit' recipe.pk %}" class="btn btn-outline-primary btn-sm">Edit</a>
+    <a href="{% url 'recipe_delete' recipe.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+  </div>
+{% endif %}
+
