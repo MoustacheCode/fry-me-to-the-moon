@@ -1,0 +1,29 @@
+{% extends 'recipes/base.html' %}
+{% block title %}{{ recipe.title }}{% endblock %}
+{% block content %}
+<article class="row">
+    <div class="col-12 col-lg-6 mb-3">
+        {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" class="img-fluid rounded border" alt="{{ recipe.title }}">
+        {% endif %}
+    </div>
+    <div class="col-12 col-lg-6">
+        <h1 class="h3">{{ recipe.title }}</h1>
+        <p class="text-muted">{{ recipe.get_category_display }}{% if recipe.cook_time_minutes %} • {{ recipe.cook_time_minutes }} mins{% endif %}</p>
+
+        <h2 class="h5 mt-3">Ingredients</h2>
+        <ul class="list-unstyled">
+            {% for line in recipe.ingredients.splitlines %}
+            <li>• {{ line }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2 class="h5 mt-3">Steps</h2>
+        <ol>
+            {% for step in recipe.steps.splitlines %}
+            <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+    </div>
+</article>
+{% endblock %}

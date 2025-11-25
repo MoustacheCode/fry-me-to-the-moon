@@ -1,0 +1,6 @@
+body { line-height: 1.6; }
+img { object-fit: cover; }
+@media print {
+  nav, form, .btn { display: none !important; }
+  body { background: white; }
+}
