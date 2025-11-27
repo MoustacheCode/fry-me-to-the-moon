@@ -39,7 +39,7 @@ def recipe_create(request):
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
-            recipe.created_by = request.user
+            recipe.owner = request.user
             recipe.save()
             return redirect('recipe_detail', pk=recipe.pk)
     else:
