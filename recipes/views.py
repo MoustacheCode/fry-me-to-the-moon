@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
 from django.db import models
-from .models import Recipe
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .forms import RecipeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.generic import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Recipe
+
 
 
 @login_required
@@ -78,3 +81,18 @@ def recipe_list(request):
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
     return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
+
+class RecipeUpdateView(UpdateView):
+    model = Recipe
+    fields = ['title', 'description', 'category', 'image']  # adjust to your model fields
+    template_name = 'recipes/recipe_form.html'
+    success_url = reverse_lazy('recipe_list')  # or wherever you want to redirect after saving
+
+
+class RecipeDeleteView(DeleteView):
+    model = Recipe
+    template_name = 'recipes/recipe_confirm_delete.html'
+    success_url = reverse_lazy('recipe_list')
+    def get_queryset(self):
+        # Limit deletion to recipes created by the logged-in user
+        return super().get_queryset().filter(created_by=self.request.user)
