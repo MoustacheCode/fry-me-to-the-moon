@@ -1,0 +1,12 @@
+{% extends "recipes/base.html" %}
+
+{% block content %}
+  <h2>You have successfully logged out.</h2>
+  <p>You will be redirected to the homepage in 5 seconds...</p>
+
+  <script>
+    setTimeout(function() {
+      window.location.href = "{% url 'recipe_list' %}";
+    }, 5000);
+  </script>
+{% endblock %}
