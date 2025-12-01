@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'fry-me-to-the-moon.herokuapp.com',
+    '.herokuapp.com',
     'localhost',
     '127.0.0.1'
 ]
