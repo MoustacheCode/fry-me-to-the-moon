@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Recipe
+from .models import Recipe, Comment
+from .forms import CommentForm
 
 
 
@@ -80,7 +81,29 @@ def recipe_list(request):
 
 def recipe_detail(request, pk):
     recipe = get_object_or_404(Recipe, pk=pk)
-    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})
+    comments = recipe.comments.all()
+
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.recipe = recipe
+                comment.author = request.user
+                comment.save()
+                messages.success(request, "Comment added successfully!")
+                return redirect('recipe_detail', pk=recipe.pk)
+        else:
+            messages.warning(request, "You must be logged in to comment.")
+            return redirect('login')
+    else:
+        form = CommentForm()
+
+    return render(request, 'recipes/recipe_detail.html', {
+        'recipe': recipe,
+        'comments': comments,
+        'form': form
+    })
 
 class RecipeUpdateView(UpdateView):
     model = Recipe
@@ -95,4 +118,16 @@ class RecipeDeleteView(DeleteView):
     success_url = reverse_lazy('recipe_list')
     def get_queryset(self):
         # Limit deletion to recipes created by the logged-in user
-        return super().get_queryset().filter(created_by=self.request.user)
+        return super().get_queryset().filter(owner=self.request.user)
+    
+@login_required
+def comment_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    recipe = comment.recipe
+    if request.user == comment.author or request.user == recipe.owner:
+        comment.delete()
+        messages.success(request, "Comment deleted.")
+    else:
+        messages.warning(request, "You can only delete your own comments.")
+    return redirect('recipe_detail', pk=recipe.pk)
+
