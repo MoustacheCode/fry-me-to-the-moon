@@ -30,11 +30,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'fry-me-to-the-moon-7fcb71e42ed5.herokuapp.com',
+    'fry-me-to-the-moon.herokuapp.com',
     'localhost',
     '127.0.0.1'
 ]
-
 
 
 # Application definition
@@ -140,7 +139,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'staticfiles']
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
