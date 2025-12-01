@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .forms import RecipeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Recipe, Comment
 from .forms import CommentForm
@@ -79,11 +79,20 @@ def recipe_list(request):
         'categories': categories,
     })
 
-def recipe_detail(request, pk):
-    recipe = get_object_or_404(Recipe, pk=pk)
-    comments = recipe.comments.all()
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'recipes/recipe_detail.html'
+    context_object_name = 'recipe'
 
-    if request.method == "POST":
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        recipe = self.get_object()
+        context['comments'] = recipe.comments.all()
+        context['form'] = CommentForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        recipe = self.get_object()
         if request.user.is_authenticated:
             form = CommentForm(request.POST)
             if form.is_valid():
@@ -96,14 +105,7 @@ def recipe_detail(request, pk):
         else:
             messages.warning(request, "You must be logged in to comment.")
             return redirect('login')
-    else:
-        form = CommentForm()
-
-    return render(request, 'recipes/recipe_detail.html', {
-        'recipe': recipe,
-        'comments': comments,
-        'form': form
-    })
+        return self.get(request, *args, **kwargs)
 
 class RecipeUpdateView(UpdateView):
     model = Recipe

@@ -26,7 +26,6 @@
         </ol>
     </div>
 </article>
-{% endblock %}
 
 {% if user.is_authenticated and user == recipe.owner %}
   <div class="mt-3 d-flex gap-2">
@@ -53,7 +52,6 @@
     <strong>{{ comment.author.username }}</strong>
     <small class="text-muted">{{ comment.created_at|date:"M d, Y H:i" }}</small>
     <p class="mb-1">{{ comment.text }}</p>
-
     {% if user == recipe.owner or user == comment.author %}
       <a href="{% url 'comment_delete' comment.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
     {% endif %}
@@ -61,4 +59,4 @@
 {% empty %}
   <p class="text-muted">No comments yet. Be the first to share your thoughts!</p>
 {% endfor %}
-
+{% endblock %}
