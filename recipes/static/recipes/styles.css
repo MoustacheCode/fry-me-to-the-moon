@@ -15,126 +15,180 @@
 }
 
 /* Global reset + base */
-* { box-sizing: border-box; }
-html,body{ height:100%; }
+/* Global reset + base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
   color: #fff;
   font-family: 'Inter', sans-serif;
+  background-color: #021027; /* dark sky background */
 }
 
+/* Keep nav/footer above background layers */
 nav, .navbar, main, footer {
   position: relative;
-  z-index: 1;
+  z-index: 2; /* ensure content is above orbs and background */
 }
 
-@keyframes move-background {
-  from {
-		-webkit-transform: translate3d(0px, 0px, 0px);
-	}
-	to { 
-		-webkit-transform: translate3d(1000px, 0px, 0px);
-	}
-}
-@-webkit-keyframes move-background {
-  from {
-		-webkit-transform: translate3d(0px, 0px, 0px);
-	}
-	to { 
-		-webkit-transform: translate3d(1000px, 0px, 0px);
-	}
+/* ------------------ Background container ------------------ */
+.background-container {
+  position: fixed;   /* stays fixed behind everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('images/fmttm-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;        /* lowest layer */
 }
 
-@-moz-keyframes move-background {    
-	from {
-		-webkit-transform: translate3d(0px, 0px, 0px);
-	}
-	to { 
-		-webkit-transform: translate3d(1000px, 0px, 0px);
-	}
-}
+/* remove .background img styles entirely */
 
-    @-webkit-keyframes move-background {
-	from {
-		-webkit-transform: translate3d(0px, 0px, 0px);
-	}
-	to { 
-		-webkit-transform: translate3d(1000px, 0px, 0px);
-	}
-}
-
-.background-container{
-	position: fixed;
-	top: 0;
-	left:0;
-	bottom: 0;
-	right: 0;
-}
-
-.stars {
- background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
- position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	display: block;
-  	z-index: 0;
-}
-
-.twinkling{
-	width:10000px;
-	height: 100%;
-	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
-	background-size: 1000px 1000px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    
-    -moz-animation:move-background 70s linear infinite;
-  -ms-animation:move-background 70s linear infinite;
-  -o-animation:move-background 70s linear infinite;
-  -webkit-animation:move-background 70s linear infinite;
-  animation:move-background 70s linear infinite;
-	
-}
-
-.clouds{
-	width:10000px;
-	height: 100%;
-	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
-	background-size: 1000px 1000px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 3;
-
-   -moz-animation:move-background 150s linear infinite;
-  -ms-animation:move-background 150s linear infinite;
-  -o-animation:move-background 150s linear infinite;
-  -webkit-animation:move-background 150s linear infinite;
-  animation:move-background 150s linear infinite;
-}
-img{
-  height: 70vh;
-  width:70vh;
+/* ------------------ Particle circles ------------------ */
+.circle-container {
   position: absolute;
-  z-index: 3;
-  right: 20px;
+  z-index: 1;        /* above background */
 }
 
-
-
-.container{
-	width: calc(100% - 2rem);
-	max-width: var(--max-width);
-	margin: 2rem auto;
-	padding: 1rem;
+.message {
+  position: relative;
+  z-index: 1;        /* above background, with orbs */
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
 }
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  background-image: radial-gradient(
+    hsl(180, 100%, 80%),
+    hsl(180, 100%, 80%) 10%,
+    hsla(180, 100%, 80%, 0) 56%
+  );
+  animation: fade-frames 2s infinite, scale-frames 4s infinite;
+}
+
+/* Fade animation */
+@keyframes fade-frames {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Scale animation */
+@keyframes scale-frames {
+  0% { transform: scale3d(0.4, 0.4, 1); }
+  50% { transform: scale3d(2.2, 2.2, 1); }
+  100% { transform: scale3d(0.4, 0.4, 1); }
+}
+
+/* ------------------ Particle positions (20) ------------------ */
+.circle-container:nth-child(1) { left: 5%;  animation: move-frames-1 30s linear infinite; }
+@keyframes move-frames-1 { from { transform: translate3d(5vw, 100vh, 0); } to { transform: translate3d(5vw, -10vh, 0); } }
+
+.circle-container:nth-child(2) { left: 10%; animation: move-frames-2 32s linear infinite; }
+@keyframes move-frames-2 { from { transform: translate3d(10vw, 100vh, 0); } to { transform: translate3d(10vw, -10vh, 0); } }
+
+.circle-container:nth-child(3) { left: 15%; animation: move-frames-3 28s linear infinite; }
+@keyframes move-frames-3 { from { transform: translate3d(15vw, 100vh, 0); } to { transform: translate3d(15vw, -10vh, 0); } }
+
+.circle-container:nth-child(4) { left: 20%; animation: move-frames-4 34s linear infinite; }
+@keyframes move-frames-4 { from { transform: translate3d(20vw, 100vh, 0); } to { transform: translate3d(20vw, -10vh, 0); } }
+
+.circle-container:nth-child(5) { left: 25%; animation: move-frames-5 29s linear infinite; }
+@keyframes move-frames-5 { from { transform: translate3d(25vw, 100vh, 0); } to { transform: translate3d(25vw, -10vh, 0); } }
+
+.circle-container:nth-child(6) { left: 30%; animation: move-frames-6 31s linear infinite; }
+@keyframes move-frames-6 { from { transform: translate3d(30vw, 100vh, 0); } to { transform: translate3d(30vw, -10vh, 0); } }
+
+.circle-container:nth-child(7) { left: 35%; animation: move-frames-7 27s linear infinite; }
+@keyframes move-frames-7 { from { transform: translate3d(35vw, 100vh, 0); } to { transform: translate3d(35vw, -10vh, 0); } }
+
+.circle-container:nth-child(8) { left: 40%; animation: move-frames-8 33s linear infinite; }
+@keyframes move-frames-8 { from { transform: translate3d(40vw, 100vh, 0); } to { transform: translate3d(40vw, -10vh, 0); } }
+
+.circle-container:nth-child(9) { left: 45%; animation: move-frames-9 30s linear infinite; }
+@keyframes move-frames-9 { from { transform: translate3d(45vw, 100vh, 0); } to { transform: translate3d(45vw, -10vh, 0); } }
+
+.circle-container:nth-child(10) { left: 50%; animation: move-frames-10 28s linear infinite; }
+@keyframes move-frames-10 { from { transform: translate3d(50vw, 100vh, 0); } to { transform: translate3d(50vw, -10vh, 0); } }
+
+.circle-container:nth-child(11) { left: 55%; animation: move-frames-11 32s linear infinite; }
+@keyframes move-frames-11 { from { transform: translate3d(55vw, 100vh, 0); } to { transform: translate3d(55vw, -10vh, 0); } }
+
+.circle-container:nth-child(12) { left: 60%; animation: move-frames-12 29s linear infinite; }
+@keyframes move-frames-12 { from { transform: translate3d(60vw, 100vh, 0); } to { transform: translate3d(60vw, -10vh, 0); } }
+
+.circle-container:nth-child(13) { left: 65%; animation: move-frames-13 31s linear infinite; }
+@keyframes move-frames-13 { from { transform: translate3d(65vw, 100vh, 0); } to { transform: translate3d(65vw, -10vh, 0); } }
+
+.circle-container:nth-child(14) { left: 70%; animation: move-frames-14 27s linear infinite; }
+@keyframes move-frames-14 { from { transform: translate3d(70vw, 100vh, 0); } to { transform: translate3d(70vw, -10vh, 0); } }
+
+.circle-container:nth-child(15) { left: 75%; animation: move-frames-15 33s linear infinite; }
+@keyframes move-frames-15 { from { transform: translate3d(75vw, 100vh, 0); } to { transform: translate3d(75vw, -10vh, 0); } }
+
+.circle-container:nth-child(16) { left: 80%; animation: move-frames-16 30s linear infinite; }
+@keyframes move-frames-16 { from { transform: translate3d(80vw, 100vh, 0); } to { transform: translate3d(80vw, -10vh, 0); } }
+
+.circle-container:nth-child(17) { left: 85%; animation: move-frames-17 28s linear infinite; }
+@keyframes move-frames-17 { from { transform: translate3d(85vw, 100vh, 0); } to { transform: translate3d(85vw, -10vh, 0); } }
+
+.circle-container:nth-child(18) { left: 90%; animation: move-frames-18 32s linear infinite; }
+@keyframes move-frames-18 { from { transform: translate3d(90vw, 100vh, 0); } to { transform: translate3d(90vw, -10vh, 0); } }
+
+.circle-container:nth-child(19) { left: 95%; animation: move-frames-19 29s linear infinite; }
+@keyframes move-frames-19 { from { transform: translate3d(95vw, 100vh, 0); } to { transform: translate3d(95vw, -10vh, 0); } }
+
+.circle-container:nth-child(20) { left: 50%; animation: move-frames-20 34s linear infinite; }
+@keyframes move-frames-20 { from { transform: translate3d(50vw, 100vh, 0); } to { transform: translate3d(100vw, -10vh, 0); } }
+
+.circle-container:nth-child(21) { left: 12%; animation: move-frames-21 31s linear infinite; }
+@keyframes move-frames-21 { from { transform: translate3d(12vw, 100vh, 0); } to { transform: translate3d(12vw, -10vh, 0); } }
+
+.circle-container:nth-child(22) { left: 28%; animation: move-frames-22 29s linear infinite; }
+@keyframes move-frames-22 { from { transform: translate3d(28vw, 100vh, 0); } to { transform: translate3d(28vw, -10vh, 0); } }
+
+.circle-container:nth-child(23) { left: 42%; animation: move-frames-23 33s linear infinite; }
+@keyframes move-frames-23 { from { transform: translate3d(42vw, 100vh, 0); } to { transform: translate3d(42vw, -10vh, 0); } }
+
+.circle-container:nth-child(24) { left: 57%; animation: move-frames-24 30s linear infinite; }
+@keyframes move-frames-24 { from { transform: translate3d(57vw, 100vh, 0); } to { transform: translate3d(57vw, -10vh, 0); } }
+
+.circle-container:nth-child(25) { left: 63%; animation: move-frames-25 28s linear infinite; }
+@keyframes move-frames-25 { from { transform: translate3d(63vw, 100vh, 0); } to { transform: translate3d(63vw, -10vh, 0); } }
+
+.circle-container:nth-child(26) { left: 70%; animation: move-frames-26 32s linear infinite; }
+@keyframes move-frames-26 { from { transform: translate3d(70vw, 100vh, 0); } to { transform: translate3d(70vw, -10vh, 0); } }
+
+.circle-container:nth-child(27) { left: 78%; animation: move-frames-27 29s linear infinite; }
+@keyframes move-frames-27 { from { transform: translate3d(78vw, 100vh, 0); } to { transform: translate3d(78vw, -10vh, 0); } }
+
+.circle-container:nth-child(28) { left: 85%; animation: move-frames-28 31s linear infinite; }
+@keyframes move-frames-28 { from { transform: translate3d(85vw, 100vh, 0); } to { transform: translate3d(85vw, -10vh, 0); } }
+
+.circle-container:nth-child(29) { left: 92%; animation: move-frames-29 27s linear infinite; }
+@keyframes move-frames-29 { from { transform: translate3d(92vw, 100vh, 0); } to { transform: translate3d(92vw, -10vh, 0); } }
+
+.circle-container:nth-child(30) { left: 97%; animation: move-frames-30 34s linear infinite; }
+@keyframes move-frames-30 { from { transform: translate3d(97vw, 100vh, 0); } to { transform: translate3d(97vw, -10vh, 0); } }
 
 h1,h2,h3,h4{ font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; color:var(--sinatra-navy); margin:0 0 .5rem 0; }
 h1{ font-size:2.25rem; letter-spacing:0.5px; }
@@ -395,6 +449,5 @@ footer{
 
 /* Ensure any global img rules don't reintroduce absolute positioning */
 .recipe-grid img { position: static !important; z-index: auto !important; }
-
 
 
