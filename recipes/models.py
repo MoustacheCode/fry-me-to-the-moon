@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 
 class Recipe(models.Model):
@@ -16,7 +17,7 @@ class Recipe(models.Model):
     description = models.TextField(blank=True)
     ingredients = models.TextField(help_text='One per line')
     steps = models.TextField(help_text='One step per line')
-    image = models.ImageField(upload_to='recipes/', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     cook_time_minutes = models.PositiveIntegerField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
