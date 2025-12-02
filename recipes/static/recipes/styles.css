@@ -1,5 +1,4 @@
 /*
-	Jazz-themed stylesheet (Frank Sinatra palette)
 	Palette: deep navy, burgundy, champagne/cream, gold, soft smoke
 	This is a starting point — add more component rules as needed.
 */
@@ -18,15 +17,117 @@
 /* Global reset + base */
 * { box-sizing: border-box; }
 html,body{ height:100%; }
-body{
-	margin:0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-	color:var(--text-dark);
-	background: linear-gradient(180deg, var(--sinatra-smoke) 0%, #ffffff 60%);
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale;
-	line-height:1.5;
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
 }
+
+nav, .navbar, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+@-webkit-keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+
+@-moz-keyframes move-background {    
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+
+    @-webkit-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+
+.background-container{
+	position: fixed;
+	top: 0;
+	left:0;
+	bottom: 0;
+	right: 0;
+}
+
+.stars {
+ background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+ position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+  	z-index: 0;
+}
+
+.twinkling{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    
+    -moz-animation:move-background 70s linear infinite;
+  -ms-animation:move-background 70s linear infinite;
+  -o-animation:move-background 70s linear infinite;
+  -webkit-animation:move-background 70s linear infinite;
+  animation:move-background 70s linear infinite;
+	
+}
+
+.clouds{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+
+   -moz-animation:move-background 150s linear infinite;
+  -ms-animation:move-background 150s linear infinite;
+  -o-animation:move-background 150s linear infinite;
+  -webkit-animation:move-background 150s linear infinite;
+  animation:move-background 150s linear infinite;
+}
+img{
+  height: 70vh;
+  width:70vh;
+  position: absolute;
+  z-index: 3;
+  right: 20px;
+}
+
+
 
 .container{
 	width: calc(100% - 2rem);
@@ -35,8 +136,7 @@ body{
 	padding: 1rem;
 }
 
-/* Typography */
-h1,h2,h3,h4{ font-family: Georgia, 'Times New Roman', serif; color:var(--sinatra-navy); margin:0 0 .5rem 0; }
+h1,h2,h3,h4{ font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; color:var(--sinatra-navy); margin:0 0 .5rem 0; }
 h1{ font-size:2.25rem; letter-spacing:0.5px; }
 h2{ font-size:1.5rem; }
 p{ margin:0 0 1rem 0; color:var(--text-dark); }
@@ -113,4 +213,188 @@ footer{
 /* Example: .accent-border { border-left:4px solid var(--sinatra-gold); padding-left:.75rem; } */
 
 /* End of jazz theme */
+
+/* Scoped styles for recipe list cards (only targets the exact row/card markup used in recipe_list.html) */
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card.h-100.shadow-sm {
+	background: linear-gradient(180deg, #ffffff 0%, #fcfbf9 100%);
+	border-radius: 10px;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid rgba(11,35,64,0.06);
+}
+
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card.h-100.shadow-sm .card-body.d-flex {
+	padding: .8rem;
+	gap: .75rem;
+	align-items: flex-start;
+}
+
+/* Force consistent image sizing inside these cards (overrides inline style if needed) */
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .card-body img.rounded {
+	width: 88px !important;
+	height: 88px !important;
+	object-fit: cover !important;
+	flex: 0 0 88px;
+	border-radius: 6px;
+	display: block;
+}
+
+/* Make the text column a vertical flex container so buttons can sit at the bottom */
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .flex-grow-1 {
+	display: flex;
+	flex-direction: column;
+	min-width: 0; /* allow text truncation */
+}
+
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .flex-grow-1 .card-title {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--sinatra-navy);
+	margin-bottom: .25rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .flex-grow-1 .card-text {
+	margin-bottom: .5rem;
+	color: var(--sinatra-muted);
+	font-size: .85rem;
+}
+
+/* Push the action buttons to the bottom of the text column and keep them compact */
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .flex-grow-1 > div {
+	margin-top: auto;
+}
+
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .btn {
+	padding: .35rem .5rem;
+	font-size: .8rem;
+	border-radius: 6px;
+}
+
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .btn + .btn {
+	margin-left: .4rem;
+}
+
+/* Slightly tone down the bootstrap shadow in this list for a cleaner grid */
+.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card.h-100.shadow-sm {
+	box-shadow: 0 6px 18px rgba(11,35,64,0.04);
+}
+
+@media (max-width: 576px) {
+	.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .card-body.d-flex {
+		gap: .5rem;
+	}
+	.row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4.g-3 > .col > .card .card-body img.rounded {
+		width: 72px !important;
+		height: 72px !important;
+		flex: 0 0 72px;
+	}
+}
+
+/* Simpler scoped selectors using the helper class added to recipe_list.html */
+.recipe-grid > .col > .card.h-100.shadow-sm {
+	background: linear-gradient(180deg, #ffffff 0%, #fcfbf9 100%);
+	border-radius: 10px;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid rgba(11,35,64,0.06);
+}
+
+.recipe-grid > .col > .card.h-100.shadow-sm .card-body.d-flex {
+	padding: .8rem;
+	gap: .75rem;
+	align-items: flex-start;
+}
+
+.recipe-grid > .col > .card .card-body img.rounded {
+	width: 88px !important;
+	height: 88px !important;
+	object-fit: cover !important;
+	flex: 0 0 88px;
+	border-radius: 6px;
+	display: block;
+	/* Ensure card images are in normal flow (override any global img rules) */
+	position: static !important;
+	z-index: auto !important;
+	align-self: flex-start;
+}
+
+.recipe-grid > .col > .card .flex-grow-1 {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.recipe-grid > .col > .card .flex-grow-1 .card-title {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--sinatra-navy);
+	margin-bottom: .25rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.recipe-grid > .col > .card .flex-grow-1 .card-text {
+	margin-bottom: .5rem;
+	color: var(--sinatra-muted);
+	font-size: .85rem;
+}
+
+.recipe-grid > .col > .card .flex-grow-1 > div { margin-top: auto; }
+
+.recipe-grid > .col > .card .btn { padding: .35rem .5rem; font-size: .8rem; border-radius: 6px; }
+.recipe-grid > .col > .card .btn + .btn { margin-left: .4rem; }
+
+.recipe-grid > .col > .card.h-100.shadow-sm { box-shadow: 0 6px 18px rgba(11,35,64,0.04); }
+
+/* Adjust for updated template: image is now .card-img-top and should sit above card body */
+.recipe-grid > .col > .card .card-img-top {
+	width: 100% !important;
+	height: 160px !important;
+	object-fit: cover !important;
+	display: block;
+	position: static !important; /* override any global absolute positioning */
+	z-index: auto !important;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.recipe-grid > .col > .card .card-body {
+	padding: .9rem;
+	display: flex;
+	flex-direction: column;
+	gap: .25rem;
+	flex: 1 1 auto; /* allow body to expand and push footer down */
+}
+
+.recipe-grid > .col > .card .card-body .card-title {
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--sinatra-navy);
+	margin-bottom: .25rem;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.recipe-grid > .col > .card .card-body .card-text {
+	margin-bottom: 0;
+	color: var(--sinatra-muted);
+	font-size: .85rem;
+}
+
+.recipe-grid > .col > .card .card-footer {
+	background: transparent;
+	border-top: 1px solid rgba(11,35,64,0.04);
+	padding: .6rem .9rem;
+}
+
+/* Ensure any global img rules don't reintroduce absolute positioning */
+.recipe-grid img { position: static !important; z-index: auto !important; }
+
+
 

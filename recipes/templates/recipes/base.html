@@ -9,9 +9,16 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
         />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'recipes/styles.css' %}" />
     </head>
-    <body class="bg-light">
+    <body>
+        <div class="background-container">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="Moon">
+            <div class="stars"></div>
+            <div class="twinkling"></div>
+            <div class="clouds"></div>
+        </div>
         <nav class="navbar navbar-light bg-white border-bottom mb-3">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'recipe_list' %}">Fry me to the Moon</a>
@@ -49,5 +56,10 @@
             </div>
         {% endif %}
         <main class="container">{% block content %}{% endblock %}</main>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        ></script>
+
     </body>
 </html>
