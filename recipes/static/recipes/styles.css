@@ -1,11 +1,116 @@
-body { line-height: 1.6;
- }
-img { object-fit: cover; }
-@media print {
-  nav, form, .btn { display: none !important; }
-  body { background: white; }
+/*
+	Jazz-themed stylesheet (Frank Sinatra palette)
+	Palette: deep navy, burgundy, champagne/cream, gold, soft smoke
+	This is a starting point — add more component rules as needed.
+*/
+
+:root {
+	--sinatra-navy: #0b2340; /* deep navy */
+	--sinatra-burgundy: #7b1e2d; /* rich burgundy */
+	--sinatra-champagne: #f5e9d6; /* champagne / cream */
+	--sinatra-gold: #c69c2e; /* muted gold */
+	--sinatra-smoke: #f3f4f6; /* light smoke */
+	--sinatra-muted: #9aa8b6; /* neutral muted */
+	--text-dark: #0f1720;
+	--max-width: 1100px;
 }
 
-.navbar-brand {
-  background-color: aqua;
+/* Global reset + base */
+* { box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+	margin:0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	color:var(--text-dark);
+	background: linear-gradient(180deg, var(--sinatra-smoke) 0%, #ffffff 60%);
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	line-height:1.5;
 }
+
+.container{
+	width: calc(100% - 2rem);
+	max-width: var(--max-width);
+	margin: 2rem auto;
+	padding: 1rem;
+}
+
+/* Typography */
+h1,h2,h3,h4{ font-family: Georgia, 'Times New Roman', serif; color:var(--sinatra-navy); margin:0 0 .5rem 0; }
+h1{ font-size:2.25rem; letter-spacing:0.5px; }
+h2{ font-size:1.5rem; }
+p{ margin:0 0 1rem 0; color:var(--text-dark); }
+
+/* Links */
+a{ color:var(--sinatra-burgundy); text-decoration: none; border-bottom: 1px solid rgba(123,30,45,0.06); }
+a:hover{ color:var(--sinatra-gold); border-bottom-color: rgba(198,156,46,0.18); }
+
+/* Buttons */
+.btn{
+	display:inline-block;
+	padding:.5rem 1rem;
+	background: var(--sinatra-burgundy);
+	color: var(--sinatra-champagne);
+	border-radius:4px;
+	box-shadow: 0 2px 6px rgba(11,35,64,0.12);
+	border: none;
+	cursor:pointer;
+}
+.btn.secondary{
+	background: transparent;
+	color: var(--sinatra-navy);
+	border: 1px solid rgba(11,35,64,0.08);
+}
+.btn:active{ transform: translateY(1px); }
+
+/* Recipe cards / list */
+.recipe-list{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; }
+.recipe-card{
+	background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+	border-radius:8px;
+	padding:1rem;
+	border: 1px solid rgba(11,35,64,0.06);
+	box-shadow: 0 6px 18px rgba(11,35,64,0.06);
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+.recipe-card:hover{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(11,35,64,0.09); }
+.recipe-card .title{ font-weight:700; color:var(--sinatra-navy); margin-bottom:.5rem; }
+.recipe-card .meta{ font-size:.875rem; color:var(--sinatra-muted); }
+
+/* Detail view */
+.recipe-detail{
+	background: linear-gradient(180deg, rgba(11,35,64,0.02), rgba(123,30,45,0.01));
+	padding:1.25rem;
+	border-radius:8px;
+	border:1px solid rgba(11,35,64,0.04);
+}
+.recipe-detail img{ max-width:100%; border-radius:6px; display:block; margin-bottom:1rem; }
+
+/* Forms and inputs */
+input[type="text"], textarea, select{
+	width:100%; padding:.6rem .7rem; border-radius:6px;
+	border:1px solid rgba(11,35,64,0.08); background: #fff;
+}
+label{ font-weight:600; color:var(--sinatra-navy); display:block; margin-bottom:.35rem; }
+
+/* Small utilities */
+.muted{ color:var(--sinatra-muted); }
+.lead{ font-size:1.0625rem; color:var(--sinatra-navy); }
+
+/* Footer / theme accent */
+footer{
+	margin-top:2.5rem; padding:1rem 0; text-align:center; color:var(--sinatra-muted);
+	border-top: 1px dashed rgba(11,35,64,0.04);
+}
+
+/* Responsive tweaks */
+@media (max-width:600px){
+	h1{ font-size:1.6rem; }
+	.container{ margin:1rem auto; }
+}
+
+/* Helpful theme mixins to extend later */
+/* Example: .accent-border { border-left:4px solid var(--sinatra-gold); padding-left:.75rem; } */
+
+/* End of jazz theme */
+
