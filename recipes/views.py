@@ -14,7 +14,11 @@ from .forms import CommentForm
 
 @login_required
 def recipe_delete(request, pk):
-    recipe = get_object_or_404(Recipe, pk=pk, owner=request.user)
+    recipe = get_object_or_404(Recipe, pk=pk)
+    if recipe.owner != request.user:
+        messages.warning(request, "You can only delete your own recipes.")
+        return redirect('recipe_list') 
+
     if request.method == "POST":
         recipe.delete()
         return redirect('recipe_list')
@@ -23,7 +27,11 @@ def recipe_delete(request, pk):
 
 @login_required
 def recipe_edit(request, pk):
-    recipe = get_object_or_404(Recipe, pk=pk, owner=request.user)
+    recipe = get_object_or_404(Recipe, pk=pk)
+    if recipe.owner != request.user:
+        messages.warning(request, "You can only edit your own recipes.")
+        return redirect('recipe_list') 
+
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
@@ -109,9 +117,13 @@ class RecipeDetailView(DetailView):
 
 class RecipeUpdateView(UpdateView):
     model = Recipe
-    fields = ['title', 'description', 'category', 'image']  # adjust to your model fields
+    fields = ['title', 'description', 'category', 'image']
     template_name = 'recipes/recipe_form.html'
-    success_url = reverse_lazy('recipe_list')  # or wherever you want to redirect after saving
+    success_url = reverse_lazy('recipe_list')
+
+    def get_queryset(self):
+        # Only allow editing recipes owned by the current user
+        return super().get_queryset().filter(owner=self.request.user)
 
 
 class RecipeDeleteView(DeleteView):
