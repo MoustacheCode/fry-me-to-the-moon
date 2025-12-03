@@ -14,7 +14,7 @@ from .forms import CommentForm
 
 @login_required
 def recipe_delete(request, pk):
-    recipe = get_object_or_404(Recipe, pk=pk, created_by=request.user)
+    recipe = get_object_or_404(Recipe, pk=pk, owner=request.user)
     if request.method == "POST":
         recipe.delete()
         return redirect('recipe_list')
@@ -23,7 +23,7 @@ def recipe_delete(request, pk):
 
 @login_required
 def recipe_edit(request, pk):
-    recipe = get_object_or_404(Recipe, pk=pk, created_by=request.user)
+    recipe = get_object_or_404(Recipe, pk=pk, owner=request.user)
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES, instance=recipe)
         if form.is_valid():
