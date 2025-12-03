@@ -54,32 +54,34 @@
             <div class="circle-container"><div class="circle"></div></div>
         </div>
 
-        <nav class="navbar navbar-light bg-white border-bottom mb-3">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'recipe_list' %}">Fry me to the Moon</a>
-            </div>
+        <nav class="navbar navbar-custom border-bottom mb-3">
+            <div class="container d-flex align-items-center">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'recipe_list' %}">
+                    <img src="{% static 'recipes/images/logo.JPG' %}" alt="Fry me to the Moon" class="brand-logo">
+                </a>
 
-            <div class="container d-flex justify-content-end gap-2">
-                {% if user.is_authenticated %}
-                    <a href="{% url 'recipe_create' %}" class="btn btn-success btn-sm">
-                        Add Recipe
-                    </a>
+                <div class="nav-actions ms-auto d-flex gap-2 align-items-center">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'recipe_create' %}" class="btn btn-success btn-sm">
+                            Add Recipe
+                        </a>
 
-                    <!-- Logout form instead of link -->
-                    <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-secondary btn-sm">
-                            Logout
-                        </button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">
-                        Login
-                    </a>
-                    <a href="{% url 'signup' %}" class="btn btn-primary btn-sm">
-                        Sign Up
-                    </a>
-                {% endif %}
+                        <!-- Logout form instead of link -->
+                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">
+                                Logout
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">
+                            Login
+                        </a>
+                        <a href="{% url 'signup' %}" class="btn btn-primary btn-sm">
+                            Sign Up
+                        </a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
 

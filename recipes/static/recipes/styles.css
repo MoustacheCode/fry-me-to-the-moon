@@ -11,10 +11,31 @@
 	--sinatra-smoke: #f3f4f6; /* light smoke */
 	--sinatra-muted: #9aa8b6; /* neutral muted */
 	--text-dark: #0f1720;
-	--max-width: 1100px;
+ 	--max-width: 1100px;
+    --navbar-bg: #400080; /* navbar background colour requested */
 }
 
-/* Global reset + base */
+.brand-logo {
+		height: 30px;   /* increase height */
+		width: auto;    /* keeps aspect ratio */
+}
+
+.navbar-custom {
+	background-color: var(--navbar-bg);
+	padding-top: .25rem;
+	padding-bottom: .25rem;
+	/* keep navbar slim */
+	min-height: 48px;
+}
+
+/* make sure the container aligns items on one row */
+.navbar-custom .container {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+
 /* Global reset + base */
 * {
   box-sizing: border-box;
@@ -43,6 +64,7 @@ nav, .navbar, main, footer {
   position: relative;
   z-index: 2; /* ensure content is above orbs and background */
 }
+
 
 /* ------------------ Background container ------------------ */
 .background-container {
@@ -191,6 +213,12 @@ nav, .navbar, main, footer {
 
 .circle-container:nth-child(30) { left: 97%; animation: move-frames-30 34s linear infinite; }
 @keyframes move-frames-30 { from { transform: translate3d(97vw, 100vh, 0); } to { transform: translate3d(97vw, -10vh, 0); } }
+
+.brand-logo {
+    height: 30px;   /* increase height */
+    width: auto;    /* keeps aspect ratio */
+}
+
 
 h1,h2,h3,h4{ font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; color:var(--sinatra-navy); margin:0 0 .5rem 0; }
 h1{ font-size:2.25rem; letter-spacing:0.5px; }
