@@ -87,7 +87,7 @@ box-shadow:
   content: "";
   position: absolute;
   inset: 0;
-  background: url("http://www.stickpng.com/assets/images/580b585b2edbce24c47b263b.png");
+  background: url("https://www.stickpng.com/assets/images/580b585b2edbce24c47b263b.png");
   background-repeat: repeat-x;   /* tile horizontally */
   background-size: 600px auto;   /* scale cloud image */
   opacity: 0.2;                  /* keep subtle so stars show through */
