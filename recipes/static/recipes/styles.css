@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Jazzbury&display=swap');
 /*
 	Palette: deep navy, burgundy, champagne/cream, gold, soft smoke
 	This is a starting point — add more component rules as needed.
@@ -114,16 +115,19 @@ box-shadow:
 }
 
 .brand-text {
-    font-family: 'Pacifico', cursive;   /* handwritten style */
+    font-family: 'Pacifico', cursive;   /* or your jazz font choice */
     font-weight: bold;
-    font-size: 1.8rem;
-    color: #cfdfff;
+    font-size: 2rem;
+    color: #f8faff; /* faint moon yellow */
+
     text-shadow: 
-        0 0 6px #e6f0ff,                /* inner glow */
-        0 0 12px #b3ccff,               /* mid glow */
-        0 0 24px #80aaff,               /* stronger outer glow */
-        0 0 48px #4d79ff;               /* bright halo */
+        0 0 6px #e6f0ff,   /* tight inner glow */
+        0 0 12px #b3ccff,  /* mid glow */
+        0 0 24px #80aaff,  /* outer glow */
+        0 0 48px #4d79ff,  /* halo */
+        0 0 72px #3344ff;  /* extra deep aura */
 }
+
 
 
 
