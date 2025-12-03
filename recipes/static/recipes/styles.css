@@ -12,8 +12,8 @@
 	--sinatra-muted: #9aa8b6; /* neutral muted */
 	--text-dark: #0f1720;
  	--max-width: 1100px;
-    --navbar-bg: #081A51; /* navbar background colour requested */
-	--navbar-bg-secondary: #1A133C; /* second colour */
+    --navbar-bg: #192E7F; /* navbar background colour requested */
+	--navbar-bg-secondary: #162875; /* second colour */
 }
 
 .brand-logo {
@@ -22,12 +22,89 @@
 }
 
 .navbar-custom {
-	background: linear-gradient(to right, var(--navbar-bg), var(--navbar-bg-secondary));
-	padding-top: .25rem;
-	padding-bottom: .25rem;
-	/* keep navbar slim */
-	min-height: 48px;
+  position: relative;
+  min-height: 48px;
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  background: linear-gradient(to right, #0D2C6D, #091F5A); /* night sky gradient */
+  overflow: hidden;
 }
+
+/* Stars layer */
+.navbar-custom::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: transparent;
+box-shadow:
+  40px 12px #fff,
+  120px 28px #fff,
+  200px 20px #fff,
+  280px 36px #fff,
+  360px 15px #fff,
+  440px 25px #fff,
+  520px 35px #fff,
+  600px 20px #fff,
+  680px 30px #fff,
+  760px 10px #fff,
+  840px 40px #fff,
+  920px 25px #fff,
+  1000px 35px #fff,
+  1080px 15px #fff,
+  1160px 28px #fff,
+  1240px 20px #fff,
+  1320px 36px #fff,
+  1400px 15px #fff,
+  /* extra stars */
+  70px 60px #fff,
+  190px 55px #fff,
+  310px 70px #fff,
+  430px 50px #fff,
+  550px 65px #fff,
+  670px 55px #fff,
+  790px 70px #fff,
+  910px 50px #fff,
+  1030px 65px #fff,
+  1150px 55px #fff,
+  1270px 70px #fff,
+  1390px 50px #fff;
+  opacity: 0.8;
+  animation: twinkle 6s infinite alternate;
+}
+
+
+@keyframes twinkle {
+  from { opacity: 0.4; }
+  to   { opacity: 0.9; }
+}
+
+/* Clouds layer */
+.navbar-custom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("http://www.stickpng.com/assets/images/580b585b2edbce24c47b263b.png");
+  background-repeat: repeat-x;   /* tile horizontally */
+  background-size: 600px auto;   /* scale cloud image */
+  opacity: 0.2;                  /* keep subtle so stars show through */
+  animation: driftClouds 60s linear infinite;
+  z-index: 2;                    /* above stars, below content */
+}
+
+@keyframes driftClouds {
+  from { background-position: 0 0; }
+  to   { background-position: 1000px 0; }
+}
+
+/* Ensure content sits above the stars */
+.navbar-custom > * {
+  position: relative;
+  z-index: 3;
+}
+
 
 /* make sure the container aligns items on one row */
 .navbar-custom .container {
