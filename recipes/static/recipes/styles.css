@@ -575,36 +575,173 @@ footer{
   display: flex;
   justify-content: center;
   margin: 2rem;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
+/* Jazz menu card */
 .paper {
-  background-color: #fffdf5;
-  background-image: linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
-  background-size: 100% 1.6em;
-  line-height: 1.6em;
+  background-color: #1a1a1a; /* solid charcoal backdrop */
+  background-image: url('/static/recipes/images/menu-bg.png'); /* your watermark image */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain; /* scale proportionally */
+  background-attachment: local;
+
   padding: 2rem;
   max-width: 900px;
-  border: 1px solid #ddd;
+  border: 2px solid #d4af37; /* gold frame */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  font-family: 'Lora', serif;
+  color: #f5f5f5;
+  position: relative;
+  z-index: 1;
+}
+
+
+.paper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(26,26,26,0.6); /* dark veil overlay */
+  pointer-events: none;            /* keeps overlay non-interactive */
+  z-index: 0;                      /* sits behind text but above background */
+}
+
+.paper * {
+  position: relative;
+  z-index: 2; /* ensures text/content sits above overlay */
+}
+
+/* Inner border inset */
+.paper::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.6); /* subtle gold line */
   border-radius: 6px;
-  box-shadow: 4px 6px 12px rgba(0,0,0,0.25), inset 0 0 8px rgba(0,0,0,0.1);
-  transform: rotate(-0.5deg);
-  font-family: 'Georgia', serif;
-  text-align: center; /* ensures title/desc/sections are centered */
-  color: #333;
+  pointer-events: none;
 }
 
-.recipe-title, .recipe-description {
-  font-family: 'Dancing Script', cursive;
-  color: #333; /* readable dark grey */
+.paper h2 {
+  text-align: center;       /* centers the title */
+  color: #d4af37;           /* classy gold tone */
+  font-family: 'Alex Brush', cursive; /* elegant calligraphy */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
-/* Image top-left */
+/* Reset only indentation, not the markers */
+.paper ul,
+.paper ol {
+  margin-left: 0;
+}
+
+/* Style list items */
+.paper ul li,
+.paper ol li {
+  color: #e0e0e0;             /* softer off‑white for readability */
+  margin-bottom: 0.5rem;
+  font-family: 'Quintessential', cursive;
+  font-size: 1.15rem;          /* slightly larger for legibility */
+  line-height: 1.6;
+  font-weight: 500;            /* medium weight for clarity */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* subtle shadow to lift text */
+}
+
+/* Ingredients list flows horizontally */
+/* Ingredients list (vertical with musical notes) */
+.paper ul {
+  list-style: none;       /* remove default bullets */
+  padding-left: 0;
+  margin-top: 2rem;
+  text-align: left;       /* keep list aligned left */
+  display: block;         /* ensure vertical stacking */
+}
+
+.paper ul li {
+  position: relative;
+  padding-left: 1.5rem;   /* space for custom marker */
+  color: #e0e0e0;
+  font-family: 'Quintessential', cursive;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  margin-bottom: 0.5rem;
+}
+
+.paper ul li::before {
+  content: "♫";           /* musical note bullet */
+  position: absolute;
+  left: 0;
+  color: #d4af37;         /* gold note */
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Instructions list (centered, vertical with gold numbers) */
+.paper ol {
+  width: 100%;
+  max-width: none;
+  margin: 2rem auto;
+  padding-left: 2rem;
+  text-align: center;     /* center the list block */
+  display: block;         /* vertical stacking */
+}
+
+.paper ol li {
+  text-align: left;       /* keep each step readable */
+  color: #e0e0e0;
+  font-family: 'Quintessential', cursive;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  margin-bottom: 0.5rem;
+}
+
+.paper ol li::marker {
+  font-weight: bold;
+  color: #d4af37;         /* gold numbers */
+}
+
+
+
+
+/* Title + description */
+.recipe-title {
+  font-family: 'Alex Brush', cursive; /* elegant calligraphy */
+  color: #d4af37; /* gold accent */
+  text-align: center;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-weight: normal;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+.recipe-description {
+  font-family: 'Quintessential', cursive;
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #eee;
+}
+
+/* Image top-left (unchanged Polaroid style) */
 .pinned-image {
   display: inline-block;
   text-align: left;            
-  margin: 0 auto 1rem 0;        /* sits top-left with space below */
+  margin: 0 auto 1rem 0;        
   background: #fff;
-  padding: 8px 8px 20px 8px;    /* Polaroid frame */
+  padding: 8px 8px 20px 8px;    
   border: 1px solid #ccc;
   box-shadow: 6px 8px 12px rgba(0,0,0,0.25);
   transform: rotate(-3deg);
@@ -615,45 +752,30 @@ footer{
   width: 180px;
   height: 180px;
   object-fit: cover;
-  display: block; /* removes inline spacing */
+  display: block;
 }
 
-/* Hover effect */
 .pinned-image:hover {
-  transform: rotate(0deg) scale(1.50); /* lift + enlarge on hover */
+  transform: rotate(0deg) scale(1.50);
   box-shadow: 0 14px 20px rgba(0,0,0,0.35);
   z-index: 10;
 }
 
 
-.recipe-title {
-  font-family: 'Alex Brush', cursive;
-  color: #333;           /* readable dark grey */
-  text-align: center;    /* keep centered under image */
-  font-size: 2.2rem;     /* larger for impact */
-  margin-top: 0.5rem;
-  margin-bottom: 0.25rem;
-  font-weight: bold;
-}
-
-.recipe-description {
-  font-size: 1.4rem;     /* slightly smaller, italic feel */
-  margin-bottom: 1rem;
-}
-
 .meta {
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
-  color: #555;
+  color: #ccc;
 }
 
+/* Ingredients + instructions */
 .ingredients, .instructions {
-  font-family: 'Open Sans', sans-serif;
-  color: #444;
+  font-family: 'Alex Brush', serif;
+  color: #f5f5f5;
   max-width: 520px;
-  margin: 0 auto 1.5rem auto; /* keeps them centered as a block */
-  text-align: center;           /* aligns text inside to the left */
+  margin: 0 auto 1.5rem auto;
+  text-align: left;
 }
 
 /* Ingredients tidy bullets */
@@ -679,6 +801,21 @@ footer{
 .instructions li {
   margin-bottom: 0.5rem;
   line-height: 1.6em;
+}
+
+.recipe-signature {
+  margin-top: 2rem;
+  text-align: right;        /* stays at the bottom-right */
+}
+
+.signature-text {
+  font-family: 'Alex Brush', cursive; /* calligraphic font */
+  font-size: 2rem;
+  color: #d4af37;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin: 0;
+  display: inline-block;    /* allows rotation without breaking layout */
+  transform: rotate(-12deg); /* tilt like a handwritten signature */
 }
 
 /* ------------------- */
