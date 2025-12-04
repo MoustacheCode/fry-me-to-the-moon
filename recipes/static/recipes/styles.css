@@ -571,4 +571,118 @@ footer{
 /* Ensure any global img rules don't reintroduce absolute positioning */
 .recipe-grid img { position: static !important; z-index: auto !important; }
 
+.recipe-page {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
 
+.paper {
+  background-color: #fffdf5;
+  background-image: linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+  background-size: 100% 1.6em;
+  line-height: 1.6em;
+  padding: 2rem;
+  max-width: 900px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 4px 6px 12px rgba(0,0,0,0.25), inset 0 0 8px rgba(0,0,0,0.1);
+  transform: rotate(-0.5deg);
+  font-family: 'Georgia', serif;
+  text-align: center; /* ensures title/desc/sections are centered */
+  color: #333;
+}
+
+.recipe-title, .recipe-description {
+  font-family: 'Dancing Script', cursive;
+  color: #333; /* readable dark grey */
+}
+
+/* Image top-left */
+.pinned-image {
+  display: inline-block;
+  text-align: left;            
+  margin: 0 auto 1rem 0;        /* sits top-left with space below */
+  background: #fff;
+  padding: 8px 8px 20px 8px;    /* Polaroid frame */
+  border: 1px solid #ccc;
+  box-shadow: 6px 8px 12px rgba(0,0,0,0.25);
+  transform: rotate(-3deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.pinned-image img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  display: block; /* removes inline spacing */
+}
+
+/* Hover effect */
+.pinned-image:hover {
+  transform: rotate(0deg) scale(1.50); /* lift + enlarge on hover */
+  box-shadow: 0 14px 20px rgba(0,0,0,0.35);
+  z-index: 10;
+}
+
+
+.recipe-title {
+  font-family: 'Alex Brush', cursive;
+  color: #333;           /* readable dark grey */
+  text-align: center;    /* keep centered under image */
+  font-size: 2.2rem;     /* larger for impact */
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.recipe-description {
+  font-size: 1.4rem;     /* slightly smaller, italic feel */
+  margin-bottom: 1rem;
+}
+
+.meta {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.ingredients, .instructions {
+  font-family: 'Open Sans', sans-serif;
+  color: #444;
+  max-width: 520px;
+  margin: 0 auto 1.5rem auto; /* keeps them centered as a block */
+  text-align: center;           /* aligns text inside to the left */
+}
+
+/* Ingredients tidy bullets */
+.ingredients {
+  list-style: none;
+  padding: 0;
+}
+.ingredients li {
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted #ccc;
+}
+.ingredients li::before {
+  content: "• ";
+  color: #444;
+  font-weight: bold;
+}
+
+/* Instructions numbered */
+.instructions {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.instructions li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6em;
+
+/* Comments placement and spacing */
+.comments-section {
+  max-width: 760px;
+  margin: 0 auto 2rem auto; /* centered, sits below paper */
+  padding: 0 1rem;
+}
