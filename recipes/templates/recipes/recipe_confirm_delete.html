@@ -3,12 +3,14 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Delete Recipe</h2>
-    <p>Are you sure you want to delete <strong>{{ object.title }}</strong>?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Yes, delete</button>
-        <a href="{% url 'recipe_detail' object.pk %}" class="btn btn-secondary">Cancel</a>
-    </form>
+    <div class="recipe-card delete-card">
+        <h2 class="card-title">Delete Recipe</h2>
+        <p>Are you sure you want to delete <strong>{{ recipe.title }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
 </div>
 {% endblock %}

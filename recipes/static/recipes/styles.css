@@ -991,6 +991,52 @@ footer{
   border-color: #b33;
 }
 
+/* Base card style (charcoal scheme) */
+.recipe-card {
+  background: #2c2c2c; /* charcoal */
+  color: #f5f5f5;      /* light text */
+  border: 1px solid #444; 
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+}
+
+/* Delete-specific card tweaks */
+.delete-card {
+  background: #3a3a3a; /* slightly lighter charcoal for contrast */
+  border-color: #c94c4c; /* red accent for delete */
+}
+
+.delete-card .card-title {
+  color: #d4af37; /* highlight delete action */
+  font-weight: bold;
+  color: #d4af37;
+}
+
+/* Buttons consistent with dark scheme */
+.btn-danger {
+  background-color: #c94c4c;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+}
+
+.btn-secondary {
+  background-color: #555;
+  color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+}
+.btn-secondary:hover {
+  background-color: #666;
+}
+
+
+
 /* ------------------- */
 /* Responsive behavior */
 /* ------------------- */
