@@ -18,7 +18,9 @@ class CommentForm(forms.ModelForm):
         fields = ['text']
         widgets = {
             'text': forms.Textarea(attrs={
+                'id': 'comment-box',                # matches your CSS
+                'class': 'form-control',            # keep Bootstrap base class
                 'rows': 3,
-                'placeholder': 'Leave a comment...'
-            })
+                'placeholder': 'Leave a comment...',
+            }),
         }
