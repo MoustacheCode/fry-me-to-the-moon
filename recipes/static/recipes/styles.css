@@ -597,6 +597,7 @@ footer{
   color: #f5f5f5;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
 
@@ -737,9 +738,9 @@ footer{
 
 /* Image top-left (unchanged Polaroid style) */
 .pinned-image {
-  display: inline-block;
-  text-align: left;            
-  margin: 0 auto 1rem 0;        
+  display: inline-block;                /* block so margin auto works */
+  margin: 1rem auto;             /* auto left/right centers it */
+  text-align: center;            /* centers any caption text */
   background: #fff;
   padding: 8px 8px 20px 8px;    
   border: 1px solid #ccc;
@@ -753,6 +754,7 @@ footer{
   height: 180px;
   object-fit: cover;
   display: block;
+  margin: 0 auto;
 }
 
 .pinned-image:hover {
@@ -877,119 +879,114 @@ footer{
 /* Sticky note comments*/
 /* ------------------- */
 .comment {
-  width: 18%;                      /* ~5 across with margins */
-  min-height: 120px;
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
+  width: 18%;                      
+  min-height: 140px;
+  border: 1px dashed #333;          
+  border-radius: 0;                 
   padding: 0.75rem;
-  box-shadow: 2px 3px 6px rgba(0,0,0,0.08);
   position: relative;
   display: inline-block;
   margin: 0.75rem 0.5%;
   vertical-align: top;
   transition: transform 0.3s ease;
   text-align: left;
-  font-size: 1rem;
-  text-shadow: 0.5px 0.5px 0 rgba(0,0,0,0.1);
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: "Courier New", monospace; 
   color: #222;
+  line-height: 1.4;
+
+  /* solid white base first */
+  background-color: #fff;
+
+  /* subtle paper gradient + faint stripes layered */
+  background-image: 
+    linear-gradient(to bottom, #fff 0%, #fdfdfd 50%, #fff 100%),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.03) 0px,
+      rgba(0,0,0,0.03) 1px,
+      transparent 2px,
+      transparent 6px
+    );
+
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-/* Cycle handwritten fonts */
-.comment:nth-child(3n+1) {
-  font-family: 'Caveat', cursive;
-  font-weight: 500;
-}
-
-.comment:nth-child(3n+2) {
-  font-family: 'Indie Flower', cursive;
-}
-
-.comment:nth-child(3n+3) {
-  font-family: 'Gloria Hallelujah', cursive;
-}
-
-/* Jazzy tape strips */
-.comment::before {
+/* Perforated tear-off edges */
+.comment::before,
+.comment::after {
   content: "";
   position: absolute;
-  top: -12px;
-  left: 50%;
-  height: 18px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-  border-radius: 2px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 6px,
+    #333 6px,
+    #333 8px
+  );
 }
+.comment::before { top: -6px; }
+.comment::after { bottom: -6px; }   /* <-- missing brace fixed */
 
-.comment:nth-child(4n+1)::before {
-  background: rgba(255, 102, 178, 0.85); /* hot pink */
-  width: 50px;
-  transform: translateX(-50%) rotate(-2deg);
-}
-.comment:nth-child(4n+2)::before {
-  background: rgba(51, 204, 204, 0.85); /* teal */
-  width: 70px;
-  transform: translateX(-50%) rotate(3deg);
-}
-.comment:nth-child(4n+3)::before {
-  background: rgba(153, 102, 255, 0.85); /* purple */
-  width: 65px;
-  transform: translateX(-50%) rotate(-4deg);
-}
-.comment:nth-child(4n+4)::before {
-  background: rgba(255, 136, 77, 0.85); /* orange */
-  width: 55px;
-  transform: translateX(-50%) rotate(2deg);
-}
-
-/* Random sticky note rotations */
-.comment:nth-child(1) { transform: rotate(-3deg); }
-.comment:nth-child(2) { transform: rotate(2deg); }
-.comment:nth-child(3) { transform: rotate(-5deg); }
-.comment:nth-child(4) { transform: rotate(4deg); }
-.comment:nth-child(5) { transform: rotate(-2deg); }
-.comment:nth-child(6) { transform: rotate(3deg); }
-.comment:nth-child(7) { transform: rotate(-4deg); }
+/* Random receipt rotations */
+.comment:nth-child(1) { transform: rotate(-2deg); }
+.comment:nth-child(2) { transform: rotate(1.5deg); }
+.comment:nth-child(3) { transform: rotate(-3deg); }
+.comment:nth-child(4) { transform: rotate(2deg); }
+.comment:nth-child(5) { transform: rotate(-1.5deg); }
+.comment:nth-child(6) { transform: rotate(2.5deg); }
+.comment:nth-child(7) { transform: rotate(-2.5deg); }
 .comment:nth-child(8) { transform: rotate(1deg); }
 
 /* Hover lift effect */
 .comment:hover {
   transform: scale(1.03) rotate(0deg);
-  box-shadow: 4px 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-/* Pastel sticky note backgrounds */
-.comment:nth-child(4n+1) { background-color: #fffbe6; }
-.comment:nth-child(4n+2) { background-color: #ffe6f2; }
-.comment:nth-child(4n+3) { background-color: #e6f7ff; }
-.comment:nth-child(4n+4) { background-color: #e6ffe6; }
-
-/* Author + timestamp */
+/* Receipt header (author + timestamp) */
 .comment strong {
   display: block;
   margin-bottom: 0.25rem;
+  border-bottom: 1px dashed #333;
+  padding-bottom: 2px;
+  font-size: 0.9rem;
 }
+
 .comment .text-muted {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: #555;
+  display: block;
+  margin-top: 2px;
 }
 
 /* Comment text */
 .comment p {
   margin-top: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.4em;
   color: #333;
 }
 
-/* Delete button */
+/* Delete button styled like receipt footer option */
 .comment .btn-outline-danger.btn-sm {
-  border-color: #d66;
+  border: 1px dashed #d66;
   color: #b33;
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  margin-top: 6px;
 }
 .comment .btn-outline-danger.btn-sm:hover {
   background: #f9e3e3;
   border-color: #b33;
 }
+
+
+
 
 /* Base card style (charcoal scheme) */
 .recipe-card {
