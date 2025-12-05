@@ -1,16 +1,41 @@
 {% extends 'recipes/base.html' %}
-{% block title %}Delete Recipe{% endblock %}
-
 {% block content %}
-<div class="container mt-4">
-    <div class="recipe-card delete-card">
-        <h2 class="card-title">Delete Recipe</h2>
-        <p>Are you sure you want to delete <strong>{{ recipe.title }}</strong>?</p>
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Yes, delete</button>
-            <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-secondary">Cancel</a>
-        </form>
-    </div>
+
+<div class="receipt-container">
+  <div class="receipt-header">
+    Recipe Deletion Receipt
+  </div>
+
+  <div class="receipt-body">
+    <p>Are you sure you want to delete:</p>
+    <p><strong>{{ recipe.title }}</strong></p>
+  </div>
+
+  <div class="receipt-footer">
+    <p>Date: {{ now|date:"d M Y H:i" }}</p>
+    <p>Action: Delete Confirmation</p>
+
+    <form method="post" id="delete-form">
+      {% csrf_token %}
+      <button type="submit" class="btn-delete">Yes, delete</button>
+      <a href="{% url 'recipe_detail' recipe.id %}" class="btn-cancel">Cancel</a>
+    </form>
+
+    <p id="thank-you" style="display:none; margin-top:10px;">
+      Thank you for using Fry Me to the Moon 🍴
+    </p>
+  </div>
 </div>
+
+<script>
+  // Simple JS to swap form with thank-you message
+  document.getElementById('delete-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent immediate navigation
+    this.style.display = 'none';
+    document.getElementById('thank-you').style.display = 'block';
+    // Optionally, submit after a short delay so deletion still happens
+    setTimeout(() => this.submit(), 800);
+  });
+</script>
+
 {% endblock %}
