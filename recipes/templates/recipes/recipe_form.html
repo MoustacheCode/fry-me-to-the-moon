@@ -1,10 +1,49 @@
-{% extends 'recipes/base.html' %}
-{% block title %}Add Recipe{% endblock %}
+{% extends "recipes/base.html" %}
 {% block content %}
-<h2>Add Recipe</h2>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Save</button>
-</form>
+<div class="container mt-4">
+  <h1>Add a New Recipe</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="mb-3">
+      {{ form.title.label_tag }} {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.description.label_tag }} {{ form.description }}
+    </div>
+
+    <h3>Ingredients</h3>
+    <div class="mb-3">
+      {{ form.ingredients.label_tag }} {{ form.ingredients }}
+      {% if form.ingredients.errors %}
+        <div class="text-danger">{{ form.ingredients.errors }}</div>
+      {% endif %}
+    </div>
+
+    <h3>Instructions</h3>
+    <div class="mb-3">
+      {{ form.steps.label_tag }} {{ form.steps }}
+      {% if form.steps.errors %}
+        <div class="text-danger">{{ form.steps.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.image.label_tag }} {{ form.image }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.category.label_tag }} {{ form.category }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.cook_time_minutes.label_tag }} {{ form.cook_time_minutes }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Recipe</button>
+  </form>
+</div>
 {% endblock %}
