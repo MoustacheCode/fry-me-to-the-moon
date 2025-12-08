@@ -9,10 +9,16 @@
 
     <div class="mb-3">
       {{ form.title.label_tag }} {{ form.title }}
+      {% if form.title.errors %}
+        <div class="text-danger">{{ form.title.errors }}</div>
+      {% endif %}
     </div>
 
     <div class="mb-3">
       {{ form.description.label_tag }} {{ form.description }}
+      {% if form.description.errors %}
+        <div class="text-danger">{{ form.description.errors }}</div>
+      {% endif %}
     </div>
 
     <h3>Ingredients</h3>
@@ -33,14 +39,23 @@
 
     <div class="mb-3">
       {{ form.image.label_tag }} {{ form.image }}
+      {% if form.image.errors %}
+        <div class="text-danger">{{ form.image.errors }}</div>
+      {% endif %}
     </div>
 
     <div class="mb-3">
       {{ form.category.label_tag }} {{ form.category }}
+      {% if form.category.errors %}
+        <div class="text-danger">{{ form.category.errors }}</div>
+      {% endif %}
     </div>
 
     <div class="mb-3">
       {{ form.cook_time_minutes.label_tag }} {{ form.cook_time_minutes }}
+      {% if form.cook_time_minutes.errors %}
+        <div class="text-danger">{{ form.cook_time_minutes.errors }}</div>
+      {% endif %}
     </div>
 
     <button type="submit" class="btn btn-primary">Save Recipe</button>
