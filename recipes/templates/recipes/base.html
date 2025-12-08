@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{% block title %}Fry me to the Moon{% endblock %}</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -58,36 +58,47 @@
             <div class="circle-container"><div class="circle"></div></div>
         </div>
 
-        <nav class="navbar navbar-custom border-bottom mb-3">
-            <div class="container d-flex align-items-center">
-                <a class="navbar-brand d-flex align-items-center brand-text" href="{% url 'recipe_list' %}">
-                    Fry me to the Moon
-                </a>
+<nav class="navbar navbar-expand-md navbar-custom border-bottom mb-3">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand d-flex align-items-center brand-text" href="{% url 'recipe_list' %}">
+      Fry me to the Moon
+    </a>
 
-                <div class="nav-actions ms-auto d-flex gap-2 align-items-center">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'recipe_create' %}" class="btn btn-success btn-sm">
-                            Add Recipe
-                        </a>
+    <!-- Toggler (burger button) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navActions"
+      aria-controls="navActions" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-                        <!-- Logout form instead of link -->
-                        <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-secondary btn-sm">
-                                Logout
-                            </button>
-                        </form>
-                    {% else %}
-                        <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">
-                            Login
-                        </a>
-                        <a href="{% url 'signup' %}" class="btn btn-primary btn-sm">
-                            Sign Up
-                        </a>
-                    {% endif %}
-                </div>
-            </div>
-        </nav>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navActions">
+      <div class="ms-auto d-flex gap-2 align-items-center">
+        {% if user.is_authenticated %}
+          <a href="{% url 'recipe_create' %}" class="btn btn-success btn-sm">
+            Add Recipe
+          </a>
+
+          <!-- Logout form -->
+          <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-secondary btn-sm">
+              Logout
+            </button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" class="btn btn-outline-primary btn-sm">
+            Login
+          </a>
+          <a href="{% url 'signup' %}" class="btn btn-primary btn-sm">
+            Sign Up
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+
 
         {% if messages %}
             <div class="container mt-2">

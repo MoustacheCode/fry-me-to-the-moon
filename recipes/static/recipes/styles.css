@@ -160,6 +160,13 @@ nav, .navbar, main, footer {
   z-index: 2; /* ensure content is above orbs and background */
 }
 
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='gold' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
 
 /* ------------------ Background container ------------------ */
 .background-container {
@@ -173,9 +180,9 @@ nav, .navbar, main, footer {
   background-position: center;
   background-repeat: no-repeat;
   z-index: 0;        /* lowest layer */
+  opacity: 0.7;
 }
 
-/* remove .background img styles entirely */
 
 /* ------------------ Particle circles ------------------ */
 .circle-container {
@@ -1254,4 +1261,13 @@ input[type="password"] {
   background: #e6c200;
   color: #fff;
   border-color: #e6c200;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav .nav-link {
+    padding: .25rem .75rem;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    margin-left: .5rem;
+  }
 }
