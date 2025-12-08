@@ -1,14 +1,89 @@
-{% extends 'recipes/base.html' %}
-{% block title %}Edit Recipe{% endblock %}
-
+{% extends "recipes/base.html" %}
 {% block content %}
-<div class="container mt-4">
-    <h2>Edit Recipe</h2>
+<div class="receipt-container">
+  <div class="receipt-header">
+    FRY ME TO THE MOON — EDIT RECIPE
+    <div class="receipt-meta">Order #2025-EDIT</div>
+  </div>
+
+  <div class="receipt-body">
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-        <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-secondary">Cancel</a>
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <!-- Title -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.title.id_for_label }}">Title</label><br>
+        {{ form.title }}
+        {% if form.title.errors %}
+          <span class="validation-message">{{ form.title.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Description -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.description.id_for_label }}">Description</label><br>
+        {{ form.description }}
+        {% if form.description.errors %}
+          <span class="validation-message">{{ form.description.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Ingredients -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.ingredients.id_for_label }}">Ingredients</label><br>
+        {{ form.ingredients }}
+        {% if form.ingredients.errors %}
+          <span class="validation-message">{{ form.ingredients.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Instructions -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.steps.id_for_label }}">Instructions</label><br>
+        {{ form.steps }}
+        {% if form.steps.errors %}
+          <span class="validation-message">{{ form.steps.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Image -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.image.id_for_label }}">Image</label><br>
+        {{ form.image }}
+        {% if form.image.errors %}
+          <span class="validation-message">{{ form.image.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Category -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.category.id_for_label }}">Category</label><br>
+        {{ form.category }}
+        {% if form.category.errors %}
+          <span class="validation-message">{{ form.category.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Cook Time -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.cook_time_minutes.id_for_label }}">Cook Time (minutes)</label><br>
+        {{ form.cook_time_minutes }}
+        {% if form.cook_time_minutes.errors %}
+          <span class="validation-message">{{ form.cook_time_minutes.errors }}</span>
+        {% endif %}
+      </p>
+
+      <div class="receipt-footer">
+        <button type="submit" class="btn-register">Update Recipe</button>
+        <a href="{% url 'recipe_list' %}" class="btn-cancel">Cancel</a>
+      </div>
     </form>
+  </div>
+
+  <!-- Signature line -->
+  <div class="receipt-signature">
+    <p class="signature-text">Recipe Updated</p>
+  </div>
 </div>
 {% endblock %}
