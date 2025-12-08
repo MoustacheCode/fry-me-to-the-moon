@@ -15,8 +15,8 @@ class Recipe(models.Model):
 
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    ingredients = models.TextField(help_text='One per line')
-    steps = models.TextField(help_text='One step per line')
+    ingredients = models.TextField(help_text='One per line', blank=True)
+    steps = models.TextField(help_text='One step per line', blank=True)
     image = CloudinaryField('image', blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     cook_time_minutes = models.PositiveIntegerField(blank=True, null=True)
