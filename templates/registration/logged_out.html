@@ -1,12 +1,28 @@
 {% extends "recipes/base.html" %}
-
 {% block content %}
-  <h2>You have successfully logged out.</h2>
-  <p>You will be redirected to the homepage in 5 seconds...</p>
+<div class="receipt-container">
+  <div class="receipt-header">
+    FRY ME TO THE MOON — LOGGED OUT
+    <div class="receipt-meta">Order #2025-OUT</div>
+  </div>
 
-  <script>
-    setTimeout(function() {
-      window.location.href = "{% url 'recipe_list' %}";
-    }, 5000);
-  </script>
+  <div class="receipt-body">
+    <p class="receipt-title-label">You have successfully logged out.</p>
+    <p class="muted">You will be redirected to the homepage in 5 seconds...</p>
+  </div>
+
+  <div class="receipt-footer">
+    <a href="{% url 'recipe_list' %}" class="btn-register">Go Now</a>
+  </div>
+
+  <div class="receipt-signature">
+    <p class="signature-text">See you soon!</p>
+  </div>
+</div>
+
+<script>
+  setTimeout(function() {
+    window.location.href = "{% url 'recipe_list' %}";
+  }, 5000);
+</script>
 {% endblock %}

@@ -1,11 +1,44 @@
-{% extends 'recipes/base.html' %}
-{% block title %}Login{% endblock %}
+{% extends "recipes/base.html" %}
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
-<p class="mt-2">No account? <a href="{% url 'signup' %}">Sign up</a></p>
+<div class="receipt-container">
+  <div class="receipt-header">
+    FRY ME TO THE MOON — LOGIN
+    <div class="receipt-meta">Order #2025-LOG</div>
+  </div>
+
+  <div class="receipt-body">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <!-- Username -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.username.id_for_label }}">Username</label><br>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <span class="validation-message">{{ form.username.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Password -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.password.id_for_label }}">Password</label><br>
+        {{ form.password }}
+        {% if form.password.errors %}
+          <span class="validation-message">{{ form.password.errors }}</span>
+        {% endif %}
+      </p>
+
+      <div class="receipt-footer">
+        <button type="submit" class="btn-register">Login</button>
+        <a href="{% url 'signup' %}" class="btn-cancel">Register</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Signature line -->
+  <div class="receipt-signature">
+    <p class="signature-text">Welcome back!</p>
+  </div>
+</div>
 {% endblock %}
