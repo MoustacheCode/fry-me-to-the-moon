@@ -122,13 +122,14 @@ class RecipeDetailView(DetailView):
 
 class RecipeUpdateView(UpdateView):
     model = Recipe
-    fields = ['title', 'description', 'category', 'image']
+    form_class = RecipeForm   # use your custom form
     template_name = 'recipes/recipe_form.html'
     success_url = reverse_lazy('recipe_list')
 
     def get_queryset(self):
         # Only allow editing recipes owned by the current user
         return super().get_queryset().filter(owner=self.request.user)
+
 
 
 class RecipeDeleteView(DeleteView):
