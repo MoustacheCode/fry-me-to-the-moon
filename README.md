@@ -1,6 +1,6 @@
 # Fry Me to the Moon
 
-![Fry Me to the Moon Header](./media/responsive.png)
+![Fry Me to the Moon Header](./media/logo.JPG)
 
 ## Introduction
 
