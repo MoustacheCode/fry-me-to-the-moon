@@ -46,20 +46,22 @@ def recipe_edit(request, pk):
 
 
 @login_required
+@login_required
 def recipe_create(request):
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            recipe = form.save(commit=False)
-            recipe.owner = request.user
-            recipe.save()
-            return redirect('recipe_detail', pk=recipe.pk)
-        else:
-            # If the form is invalid, re-render the template with errors
-            return render(request, 'recipes/recipe_form.html', {'form': form})
+            recipe = form.save(commit=False)   # don't save yet
+            recipe.owner = request.user        # set the owner
+            recipe.save()                      # now save
+            return render(
+                request,
+                "recipes/recipe_form.html",
+                {"form": RecipeForm(), "recipe_success": True}
+            )
     else:
         form = RecipeForm()
-    return render(request, 'recipes/recipe_form.html', {'form': form})
+    return render(request, "recipes/recipe_form.html", {"form": form})
 
 def signup(request):
     if request.method == "POST":

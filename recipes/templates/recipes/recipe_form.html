@@ -1,64 +1,92 @@
 {% extends "recipes/base.html" %}
 {% block content %}
-<div class="container mt-4">
-  <h1>Add a New Recipe</h1>
+<div class="receipt-container">
+  <div class="receipt-header">
+    FRY ME TO THE MOON — NEW RECIPE
+    <div class="receipt-meta">Order #2025-REC</div>
+  </div>
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
+  <div class="receipt-body">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
 
-    <div class="mb-3">
-      {{ form.title.label_tag }} {{ form.title }}
-      {% if form.title.errors %}
-        <div class="text-danger">{{ form.title.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.title.id_for_label }}">Title</label><br>
+        {{ form.title }}
+        {% if form.title.errors %}
+          <span class="validation-message">{{ form.title.errors }}</span>
+        {% endif %}
+      </p>
 
-    <div class="mb-3">
-      {{ form.description.label_tag }} {{ form.description }}
-      {% if form.description.errors %}
-        <div class="text-danger">{{ form.description.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.description.id_for_label }}">Description</label><br>
+        {{ form.description }}
+        {% if form.description.errors %}
+          <span class="validation-message">{{ form.description.errors }}</span>
+        {% endif %}
+      </p>
 
-    <h3>Ingredients</h3>
-    <div class="mb-3">
-      {{ form.ingredients.label_tag }} {{ form.ingredients }}
-      {% if form.ingredients.errors %}
-        <div class="text-danger">{{ form.ingredients.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.ingredients.id_for_label }}">Ingredients</label><br>
+        {{ form.ingredients }}
+        {% if form.ingredients.errors %}
+          <span class="validation-message">{{ form.ingredients.errors }}</span>
+        {% endif %}
+      </p>
 
-    <h3>Instructions</h3>
-    <div class="mb-3">
-      {{ form.steps.label_tag }} {{ form.steps }}
-      {% if form.steps.errors %}
-        <div class="text-danger">{{ form.steps.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.steps.id_for_label }}">Instructions</label><br>
+        {{ form.steps }}
+        {% if form.steps.errors %}
+          <span class="validation-message">{{ form.steps.errors }}</span>
+        {% endif %}
+      </p>
 
-    <div class="mb-3">
-      {{ form.image.label_tag }} {{ form.image }}
-      {% if form.image.errors %}
-        <div class="text-danger">{{ form.image.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.image.id_for_label }}">Image</label><br>
+        {{ form.image }}
+        {% if form.image.errors %}
+          <span class="validation-message">{{ form.image.errors }}</span>
+        {% endif %}
+      </p>
 
-    <div class="mb-3">
-      {{ form.category.label_tag }} {{ form.category }}
-      {% if form.category.errors %}
-        <div class="text-danger">{{ form.category.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.category.id_for_label }}">Category</label><br>
+        {{ form.category }}
+        {% if form.category.errors %}
+          <span class="validation-message">{{ form.category.errors }}</span>
+        {% endif %}
+      </p>
 
-    <div class="mb-3">
-      {{ form.cook_time_minutes.label_tag }} {{ form.cook_time_minutes }}
-      {% if form.cook_time_minutes.errors %}
-        <div class="text-danger">{{ form.cook_time_minutes.errors }}</div>
-      {% endif %}
-    </div>
+      <p>
+        <label class="receipt-title-label" for="{{ form.cook_time_minutes.id_for_label }}">Cook Time (minutes)</label><br>
+        {{ form.cook_time_minutes }}
+        {% if form.cook_time_minutes.errors %}
+          <span class="validation-message">{{ form.cook_time_minutes.errors }}</span>
+        {% endif %}
+      </p>
 
-    <button type="submit" class="btn btn-primary">Save Recipe</button>
-  </form>
+      <div class="receipt-footer">
+        <button type="submit" class="btn-register">Save Recipe</button>
+        <a href="{% url 'recipe_list' %}" class="btn-cancel">Cancel</a>
+      </div>
+    </form>
+  </div>
 </div>
+
+{% if recipe_success %}
+  <!-- Popup overlay -->
+  <div class="receipt-popup">
+    <div class="receipt-popup-card">
+      <p class="signature-text">Recipe Submitted</p>
+      <p class="popup-subtext">Redirecting to recipe list…</p>
+    </div>
+  </div>
+  <script>
+    setTimeout(function () {
+      window.location.href = "{% url 'recipe_list' %}";
+    }, 3000);
+  </script>
+{% endif %}
 {% endblock %}
