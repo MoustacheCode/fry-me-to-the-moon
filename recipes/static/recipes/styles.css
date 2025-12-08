@@ -6,12 +6,12 @@
 
 :root {
 	--sinatra-navy: #0b2340; /* deep navy */
-	--sinatra-burgundy: #7b1e2d; /* rich burgundy */
+	--sinatra-burgundy: #c69c2e; /* muted  gold */
 	--sinatra-champagne: #f5e9d6; /* champagne / cream */
 	--sinatra-gold: #c69c2e; /* muted gold */
-	--sinatra-smoke: #f3f4f6; /* light smoke */
+	--sinatra-smoke: #fafafa;
 	--sinatra-muted: #9aa8b6; /* neutral muted */
-	--text-dark: #0f1720;
+	--text-dark: #f5e9d6; /* main text colour */
  	--max-width: 1100px;
     --navbar-bg: #192E7F; /* navbar background colour requested */
 	--navbar-bg-secondary: #162875; /* second colour */
@@ -320,6 +320,7 @@ p{ margin:0 0 1rem 0; color:var(--text-dark); }
 a{ color:var(--sinatra-burgundy); text-decoration: none; border-bottom: 1px solid rgba(123,30,45,0.06); }
 a:hover{ color:var(--sinatra-gold); border-bottom-color: rgba(198,156,46,0.18); }
 
+
 /* Buttons */
 .btn{
 	display:inline-block;
@@ -377,6 +378,8 @@ footer{
 	margin-top:2.5rem; padding:1rem 0; text-align:center; color:var(--sinatra-muted);
 	border-top: 1px dashed rgba(11,35,64,0.04);
 }
+
+
 
 /* Responsive tweaks */
 @media (max-width:600px){
@@ -738,7 +741,7 @@ footer{
 
 /* Image top-left (unchanged Polaroid style) */
 .pinned-image {
-  display: inline-block;                /* block so margin auto works */
+  display: inline-block;                
   margin: 1rem auto;             /* auto left/right centers it */
   text-align: center;            /* centers any caption text */
   background: #fff;
@@ -1083,3 +1086,86 @@ footer{
     transform: rotate(0deg);
   }
 }
+
+/* === Charcoal card + gold title === */
+.recipe-grid > .col > .card.h-100.shadow-sm {
+  background: none !important;           /* cancel gradient */
+  background-color: #181715 !important;  /* charcoal */
+  color: #ffffff;                         /* readable default text */
+}
+
+/* === Unify card fonts with recipe view === */
+.recipe-grid > .col > .card .card-body .card-title {
+  color: #FFD700 !important;   /* gold */
+  font-family: 'Quintessential', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.recipe-grid > .col > .card .card-body .card-text {
+  font-family: 'Quintessential', cursive; /* same as recipe-description/meta */
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ccc;                             /* softened for charcoal background */
+  font-style: italic;                      /* optional, matches recipe view vibe */
+}
+
+/* === Unify all buttons inside these cards to gold === */
+/* View (btn-outline-secondary), Edit (btn-warning), Delete (btn-danger) */
+.recipe-grid > .col > .card .btn {
+  background-color: #c69c2e !important;   /* gold fill */
+  color: #181715 !important;              /* charcoal text */
+  border: 1px solid #c69c2e !important;   /* gold border */
+}
+
+.recipe-grid > .col > .card .btn:hover {
+  background-color: #e6c200 !important;   /* darker gold */
+  color: #ffffff !important;              /* white text on hover */
+  border-color: #e6c200 !important;
+}
+
+/* Optional: footer line blends better on charcoal */
+.recipe-grid > .col > .card .card-footer {
+  border-top-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Override muted text inside recipe cards */
+.recipe-grid > .col > .card .card-body .card-text,
+.recipe-grid > .col > .card .card-body .text-muted {
+    color: var(--sinatra-champagne) !important; /* warm cream tone */
+    font-family: 'Quintessential', cursive;     /* unify with recipe view */
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* Invert card colors on hover */
+.recipe-grid > .col > .card.h-100.shadow-sm:hover {
+  background-color: #c69c2e !important; /* gold background */
+  color: #181715 !important;            /* dark text */
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+  transition: all 0.25s ease;
+}
+
+/* Ensure title and text invert too */
+.recipe-grid > .col > .card.h-100.shadow-sm:hover .card-title {
+  color: #181715 !important; /* dark title on gold */
+}
+
+.recipe-grid > .col > .card.h-100.shadow-sm:hover .card-text {
+  color: #181715 !important; /* dark meta text */
+}
+
+/* Buttons invert as well */
+.recipe-grid > .col > .card.h-100.shadow-sm:hover .btn {
+  background-color: #181715 !important; /* dark button */
+  color: #c69c2e !important;            /* gold text */
+  border: 1px solid #181715 !important;
+}
+
+.recipe-grid > .col > .card.h-100.shadow-sm:hover .btn:hover {
+  background-color: #333 !important;    /* slightly lighter dark */
+  color: #c69c2e !important;
+}
+
