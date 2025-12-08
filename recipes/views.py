@@ -53,6 +53,9 @@ def recipe_create(request):
             recipe.owner = request.user
             recipe.save()
             return redirect('recipe_detail', pk=recipe.pk)
+        else:
+            # If the form is invalid, re-render the template with errors
+            return render(request, 'recipes/recipe_form.html', {'form': form})
     else:
         form = RecipeForm()
     return render(request, 'recipes/recipe_form.html', {'form': form})
