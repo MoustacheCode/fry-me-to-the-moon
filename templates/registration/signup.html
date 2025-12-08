@@ -1,12 +1,72 @@
-{% extends 'recipes/base.html' %} 
-
-{% block title %}Sign up{% endblock %}
-
+{% extends "recipes/base.html" %}
 {% block content %}
-<h2>Create your account</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Sign up</button>
-</form>
+<div class="receipt-container">
+  <div class="receipt-header">
+    FRY ME TO THE MOON — REGISTRATION
+    <div class="receipt-meta">Order #2025-REG</div>
+  </div>
+
+  <div class="receipt-body">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+
+      <!-- Username -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.username.id_for_label }}">Username</label><br>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <span class="validation-message">{{ form.username.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Email -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.email.id_for_label }}">Email</label><br>
+        {{ form.email }}
+        {% if form.email.errors %}
+          <span class="validation-message">{{ form.email.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Password -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.password1.id_for_label }}">Password</label><br>
+        {{ form.password1 }}
+        {% if form.password1.errors %}
+          <span class="validation-message">{{ form.password1.errors }}</span>
+        {% endif %}
+      </p>
+
+      <!-- Confirm Password -->
+      <p>
+        <label class="receipt-title-label" for="{{ form.password2.id_for_label }}">Confirm Password</label><br>
+        {{ form.password2 }}
+        {% if form.password2.errors %}
+          <span class="validation-message">{{ form.password2.errors }}</span>
+        {% endif %}
+      </p>
+
+      <div class="receipt-footer">
+        <button type="submit" class="btn-register">Create Account</button>
+        <a href="{% url 'login' %}" class="btn-cancel">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% if registered_success %}
+  <!-- Popup overlay -->
+  <div class="receipt-popup">
+    <div class="receipt-popup-card">
+      <p class="signature-text">Thank you for Registering</p>
+      <p class="popup-subtext">Redirecting to login…</p>
+    </div>
+  </div>
+  <script>
+    setTimeout(function () {
+      window.location.href = "{% url 'login' %}";
+    }, 3000);
+  </script>
+{% endif %}
 {% endblock %}

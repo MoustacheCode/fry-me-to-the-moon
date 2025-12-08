@@ -1,6 +1,8 @@
 from django import forms
 from .models import Recipe
 from .models import Comment
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class RecipeForm(forms.ModelForm):
     class Meta:
@@ -68,5 +70,32 @@ class CommentForm(forms.ModelForm):
                 'class': 'form-control',            # keep Bootstrap base class
                 'rows': 3,
                 'placeholder': 'Leave a comment...',
+            }),
+        }
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'you@example.com'
+        })
+    )
+
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password2")
+        widgets = {
+            'username': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Choose a username'
+            }),
+            'password1': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter a password'
+            }),
+            'password2': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Confirm your password'
             }),
         }

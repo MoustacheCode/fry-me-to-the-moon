@@ -1007,7 +1007,7 @@ footer{
   width: 420px;                  /* bigger width */
   margin: 60px auto;             /* more breathing space */
   padding: 25px;
-  background: #fff;
+  background: #181715;
   border: 1px dashed #333;
   font-family: "Courier New", monospace;
   font-size: 15px;               /* slightly larger text */
@@ -1064,6 +1064,66 @@ footer{
   text-decoration: none;
   padding: 8px 14px;
 }
+
+
+/* Gold field titles */
+.receipt-title-label {
+  font-weight: bold;
+  color: var(--sinatra-gold);
+  font-size: 0.95rem;
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+/* Validation messages under fields */
+.validation-message {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #c0392b;
+  font-family: "Courier New", monospace;
+}
+
+/* Thank-you signature (you already have similar) */
+.receipt-signature { margin-top: 2rem; text-align: right; }
+.signature-text {
+  font-family: 'Alex Brush', cursive;
+  font-size: 2rem;
+  color: var(--sinatra-gold);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  margin: 0;
+  display: inline-block;
+  transform: rotate(-12deg);
+}
+
+/* Popup overlay styled like a stamped receipt */
+.receipt-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.receipt-popup-card {
+  background: #fff;
+  border: 2px dashed #333;
+  box-shadow: 6px 8px 12px rgba(0,0,0,0.25);
+  transform: rotate(-2deg);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  font-family: "Courier New", monospace;
+}
+.popup-subtext {
+  margin-top: .25rem;
+  color: #555;
+  font-size: .9rem;
+}
+
 
 
 /* ------------------- */
@@ -1169,3 +1229,29 @@ footer{
   color: #c69c2e !important;
 }
 
+/* Make password inputs match your text/textarea style */
+input[type="password"] {
+  width: 100%;
+  padding: .6rem .7rem;
+  border-radius: 6px;
+  border: 1px solid rgba(11,35,64,0.08);
+  background: #fff;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+}
+
+/* Gold submit, aligned with receipt button sizing */
+.btn-register {
+  background: #c69c2e;       /* gold */
+  color: #181715;            /* charcoal text */
+  border: 1px dashed #c69c2e;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.btn-register:hover {
+  background: #e6c200;
+  color: #fff;
+  border-color: #e6c200;
+}

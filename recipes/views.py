@@ -10,6 +10,7 @@ from django.urls import reverse_lazy
 from .models import Recipe, Comment
 from .forms import CommentForm
 from django.db.models import Q
+from .forms import SignUpForm
 
 
 
@@ -62,13 +63,18 @@ def recipe_create(request):
 
 def signup(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            # Render the same template with success flag to show popup
+            return render(
+                request,
+                "registration/signup.html",
+                {"form": SignUpForm(), "registered_success": True}
+            )
     else:
-        form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form})
+        form = SignUpForm()
+    return render(request, "registration/signup.html", {"form": form})
 
 def recipe_list(request):
     query = request.GET.get('q', '').strip()
