@@ -8,21 +8,38 @@
 
 ### Project Overview
 - **Project Name:** Fry Me to the Moon
-- **Purpose:** [Describe the main purpose]
-- **Target Audience:** [Describe the intended users]
-- **Technologies Used:** [List main technologies - Django, Python, etc.]
+- **Purpose:** To upload, discover and share your own unique recipes
+- **Target Audience:** Anybody who has an interest in Cooking/Baking
+<details>
+<summary><strong>Technologies Used</strong></summary>
+
+- **Front End:** HTML5, CSS, Bootstrap 5, JavaScript
+- **Back End:** Python, Django
+- **Database:** SQLite, PostgreSQL
+- **Frameworks:** Bootstrap, Cloudinary, Django, gunicorn, pyscopg2
+
+</details>
 
 ---
 
 ## UX Design
 
-### Design Philosophy
-[Explain your design approach and user-centered design principles.]
+### Design
+The main design rules were to follow the Name of the website, keeping it light and Jazz themed, adding in an essence of a Jazz Resteraunt. Initially the project was aimed to be a user driven interactive web book, which may be implemented post deadline.
 
-### User Stories
-[Document key user stories that informed the design:]
-- As a [user type], I want to [action], so that [benefit]
-- As a [user type], I want to [action], so that [benefit]
+<details>
+<summary><strong>User Stories</strong></summary>
+
+[Amongst the user stories located on the Project Board, the below are those that I was able to fulfill within the deadline:]
+- As a registered user, I want to upload my own recipe with images so that I can share my creations with the community.
+- As a registered user, I want to edit or delete my recipes so that I can keep my content up to date.
+- As a visitor, I want to view a recipe with ingredients, steps, and cooking time clearly laid out so that I can follow it easily.
+- As a visitor, I want to see images alongside recipes so that I know what the finished dish should look like.
+- As a visitor, I want to browse recipes by category (e.g., desserts, mains, vegan) so that I can quickly find what I’m interested in.
+- As a registered user, I want to comment on recipes so that I can share tips or ask questions.
+- As a visitor, I want to navigate recipes easily on mobile and desktop so that I can cook from any device.
+
+</details>
 
 ### Wireframes & Mockups
 [Include links or descriptions of wireframes and design mockups]
@@ -31,7 +48,19 @@
 [Describe the color palette and typography choices]
 
 ### Responsive Design
-[Explain how the application is responsive across different devices and screen sizes]
+<details>
+<summary><strong>Click to view Responsive Design details</strong></summary>
+
+The application is designed to be fully responsive, ensuring a seamless user experience across various devices and screen sizes. Key features of the responsive design include:
+
+- **Fluid Grid Layout:** The layout adjusts dynamically based on the screen size, using percentage-based widths for elements.
+- **Media Queries:** CSS media queries are employed to apply different styles for different screen sizes, ensuring optimal readability and usability.
+- **Flexible Images:** Images are set to a maximum width of 100%, allowing them to scale appropriately within their containers.
+- **Mobile Navigation:** A collapsible navigation menu is implemented for mobile devices, providing easy access to all sections without overwhelming the user.
+
+This approach guarantees that users can interact with the application effectively, whether on a desktop, tablet, or smartphone.
+![Responsive Design Example](./media/responsive.png)
+</details>
 
 ---
 
@@ -212,7 +241,8 @@ python manage.py test
 <details>
 <summary>Click to view Recipe Details screenshot</summary>
 
-![Recipe Details Page](./media/recipe-details.JPG)
+![Recipe Details Page](./media/recipe_view_lighthouse_desktop.JPG)
+![Recipe Details Page](./media/recipe_view_lighthouse_mobile.JPG)
 
 </details>
 
@@ -220,7 +250,8 @@ python manage.py test
 <details>
 <summary>Click to view Login screenshot</summary>
 
-![Login Page](./media/login.JPG)
+![Login Page](./media/login_lighthouse_desktop.JPG)
+![Login Page](./media/login_lighthouse_desktop.JPG)
 
 </details>
 
@@ -228,7 +259,8 @@ python manage.py test
 <details>
 <summary>Click to view Logout screenshot</summary>
 
-![Logout Page](./media/logout.JPG)
+![Logout Page](./media/logout_lighthouse_desktop.JPG)
+![Logout Page](./media/logout_lighthouse_mobile.JPG)
 
 </details>
 
@@ -236,7 +268,8 @@ python manage.py test
 <details>
 <summary>Click to view Edit Recipe screenshot</summary>
 
-![Edit Recipe Page](./media/edit.JPG)
+![Edit Recipe Page](./media/edit_lighthouse_desktop.JPG)
+![Edit Recipe Page](./media/edit_lighthouse_mobile.JPG)
 
 </details>
 
@@ -244,7 +277,8 @@ python manage.py test
 <details>
 <summary>Click to view Delete Recipe screenshot</summary>
 
-![Delete Recipe Page](./media/delete.JPG)
+![Delete Recipe Page](./media/delete_lighthouse_desktop.JPG)
+![Delete Recipe Page](./media/delete_lighthouse_mobile.JPG)
 
 </details>
 
