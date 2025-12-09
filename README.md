@@ -1,6 +1,8 @@
-# Fry Me to the Moon
+<div style="text-align: center; width: 100%;">
 
 ![Fry Me to the Moon Header](./media/logo.JPG)
+
+</div>
 
 ## Introduction
 
@@ -304,6 +306,7 @@ As of today, any issues with uploading images has been resolved, and all the act
 - [Python Documentation](https://docs.python.org/)
 - [MDN Web Docs](https://developer.mozilla.org/)
 - [FreeFrontEnd](https://freefrontend.com/css-animated-backgrounds/page/2/)
+- [Eraser.io](https://app.eraser.io/workspace/I2ctBmT5eFPguCVwpBPI)
 
 ### Special Thanks
 [Thank you to Code Institute for their guidance and preperation to be able to build this project]
