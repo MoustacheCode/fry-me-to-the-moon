@@ -150,7 +150,39 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 
 ### Unit Tests
-[Document unit tests for key components]
+<details>
+<summary><strong>Forms Tests</strong></summary>
+
+![Forms](./media/forms_test.JPG)
+![Forms](./media/testformcode.JPG)
+
+</details>
+
+<details>
+<summary><strong>Views Tests</strong></summary>
+
+![Views](./media/views_test.JPG)
+![Views](./media/testviewscode.JPG)
+
+</details>
+
+<details>
+<summary><strong>URLs Tests</strong></summary>
+
+![URLs](./media/urls_test.JPG)
+![URLs](./media/urlstestcode.JPG)
+
+</details>
+
+<details>
+<summary><strong>Models Tests</strong></summary>
+
+![Models](./media/recipe_model_test.JPG)
+![Models](./media/modelstest.JPG)
+
+</details>
+
+
 
 ### Integration Tests
 <details>
