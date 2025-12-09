@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from recipes.models import Recipe
 
+
 class RecipeModelTest(TestCase):
     def setUp(self):
         # Create a test user
@@ -15,7 +16,7 @@ class RecipeModelTest(TestCase):
             steps="Boil water\nAdd carrots\nSeason",
             category="mains",
             cook_time_minutes=30,
-            owner=self.user
+            owner=self.user,
         )
         # Basic field checks
         self.assertEqual(recipe.title, "Soup")
@@ -29,7 +30,7 @@ class RecipeModelTest(TestCase):
             ingredients="Flour\nSugar\nEggs",
             steps="Mix\nBake",
             category="desserts",
-            owner=self.user
+            owner=self.user,
         )
         self.assertEqual(str(recipe), "Cake")
 
@@ -39,14 +40,14 @@ class RecipeModelTest(TestCase):
             ingredients="A",
             steps="Step",
             category="snacks",
-            owner=self.user
+            owner=self.user,
         )
         r2 = Recipe.objects.create(
             title="Second",
             ingredients="B",
             steps="Step",
             category="drinks",
-            owner=self.user
+            owner=self.user,
         )
         recipes = Recipe.objects.all()
         # Because of Meta ordering = ['-created_at'], newest first
@@ -59,6 +60,6 @@ class RecipeModelTest(TestCase):
             ingredients="Ingredient",
             steps="Step",
             category="vegan",
-            owner=self.user
+            owner=self.user,
         )
         self.assertEqual(recipe.description, "")

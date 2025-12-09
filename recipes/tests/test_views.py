@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from recipes.models import Recipe
 
+
 class RecipeViewTests(TestCase):
     def setUp(self):
         # Create a test user
@@ -16,7 +17,7 @@ class RecipeViewTests(TestCase):
             ingredients="Water\nCarrots\nSalt",
             steps="Boil water\nAdd carrots\nSeason",
             category="mains",
-            owner=self.user
+            owner=self.user,
         )
 
     def test_recipe_list_view(self):
@@ -30,24 +31,30 @@ class RecipeViewTests(TestCase):
         self.assertContains(response, "Warm and cozy")
 
     def test_recipe_create_view_post(self):
-        response = self.client.post(reverse("recipe_create"), {
-            "title": "Cake",
-            "description": "Sweet dessert",
-            "ingredients": "Flour\nSugar\nEggs",
-            "steps": "Mix\nBake",
-            "category": "desserts",
-        })
+        response = self.client.post(
+            reverse("recipe_create"),
+            {
+                "title": "Cake",
+                "description": "Sweet dessert",
+                "ingredients": "Flour\nSugar\nEggs",
+                "steps": "Mix\nBake",
+                "category": "desserts",
+            },
+        )
         self.assertEqual(response.status_code, 200)  # renders recipe_form again
         self.assertTrue(Recipe.objects.filter(title="Cake").exists())
 
     def test_recipe_edit_view(self):
-        response = self.client.post(reverse("recipe_edit", args=[self.recipe.pk]), {
-            "title": "Soup Updated",
-            "description": "Even warmer",
-            "ingredients": "Water\nCarrots\nSalt\nPepper",
-            "steps": "Boil water\nAdd carrots\nSeason\nAdd pepper",
-            "category": "mains",
-        })
+        response = self.client.post(
+            reverse("recipe_edit", args=[self.recipe.pk]),
+            {
+                "title": "Soup Updated",
+                "description": "Even warmer",
+                "ingredients": "Water\nCarrots\nSalt\nPepper",
+                "steps": "Boil water\nAdd carrots\nSeason\nAdd pepper",
+                "category": "mains",
+            },
+        )
         self.recipe.refresh_from_db()
         self.assertEqual(self.recipe.title, "Soup Updated")
 

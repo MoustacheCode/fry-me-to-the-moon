@@ -3,6 +3,7 @@ from django.urls import reverse, resolve
 from recipes import views
 from django.contrib.auth import views as auth_views
 
+
 class TestUrls(SimpleTestCase):
     def test_recipe_list_url_resolves(self):
         url = reverse("recipe_list")
