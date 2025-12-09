@@ -3,14 +3,18 @@
 {% block content %}
 <div class="d-flex flex-wrap align-items-end gap-3 mb-3">
     <form class="d-flex gap-2" method="get">
-        <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Search by title or ingredient">
-        <select name="category" class="form-select">
+        <label for="search-query" class="visually-hidden">Search recipes</label>
+        <input id="search-query" type="text" name="q" value="{{ query }}" 
+            class="form-control" placeholder="Search by title or ingredient">
+
+        <label for="category" class="visually-hidden">Filter by category</label>
+        <select id="category" name="category" class="form-select">
             <option value="">All categories</option>
             {% for key,label in categories.items %}
                 <option value="{{ key }}" {% if key == category %}selected{% endif %}>{{ label }}</option>
             {% endfor %}
         </select>
-        <button class="btn btn-primary" type="submit">Filter</button>
+        <button id="filter-btn" class="btn btn-primary" type="submit">Filter</button>
     </form>
 </div>
 

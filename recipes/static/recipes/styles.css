@@ -1090,6 +1090,19 @@ footer{
   padding: 8px 14px;
 }
 
+#filter-btn {
+  background-color: #d4af37; /* gold */
+  color: #000000;           /* black text */
+  border-color: #d4af37;
+}
+
+#filter-btn:hover,
+#filter-btn:focus {
+  background-color: #c19e2f; /* darker gold */
+  color: #000000;
+  border-color: #c19e2f;
+}
+
 
 /* Gold field titles */
 .receipt-title-label {
