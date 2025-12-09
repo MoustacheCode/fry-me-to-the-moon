@@ -18,6 +18,7 @@
 - **Back End:** Python, Django
 - **Database:** SQLite, PostgreSQL
 - **Frameworks:** Bootstrap, Cloudinary, Django, gunicorn, pyscopg2
+- **Tools:** Flake8, Black (For linting and formating to pep8 standards)
 
 </details>
 
@@ -69,22 +70,6 @@ This approach guarantees that users can interact with the application effectivel
 
 ### Agile Methodology
 [Describe your agile approach - Scrum, Kanban, etc.]
-
-### Sprint Planning
-[Document your sprint cycle and planning process]
-
-### User Stories & Acceptance Criteria
-[List key user stories with acceptance criteria]
-
-### Sprint History
-| Sprint | Duration | Goals | Status |
-|--------|----------|-------|--------|
-| Sprint 1 | [Dates] | [Goals] | Completed |
-| Sprint 2 | [Dates] | [Goals] | Completed |
-| Sprint 3 | [Dates] | [Goals] | In Progress |
-
-### Burndown Charts & Metrics
-[Include links to or descriptions of project metrics and burndown data]
 
 ---
 
