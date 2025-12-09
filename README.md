@@ -1,6 +1,6 @@
 
 
-![Fry Me to the Moon Header](./media/logo_2.JPG)
+![Fry Me to the Moon Header](./media/logo_2.png)
 
 
 ## Introduction
