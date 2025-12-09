@@ -100,66 +100,17 @@ User (id) ───< Recipe (id, title, description, ingredients, instructions, 
                   └───< Delete (id, recipe_id, deleted_at, reason)
 
 Category (id, name) ───< Recipe.category_id
-</details>
-
-## User
-<details>
-- id (PK)
-</details>
-
-## Recipe
-<details>
-- id (PK)
-- title
-- description
-- ingredients
-- instructions
-- cook_time
-- category_id (FK → Category.id)
-- user_id (FK → User.id)
-</details>
-
-## Category
-<details>
-- id (PK)
-- name
-</details>
-
-## Comment
-<details>
-- id (PK)
-- content
-- recipe_id (FK → Recipe.id)
-- user_id (FK → User.id)
-</details>
-
-## Edit
-<details>
-- id (PK)
-- recipe_id (FK → Recipe.id)
-- edited_at
-- changes
-</details>
-
-## Delete
-<details>
-- id (PK)
-- recipe_id (FK → Recipe.id)
-- deleted_at
-- reason
-</details>
 
 ---
 
 ### Relationships
-<details>
 - One **User** → Many **Recipes**
 - One **Recipe** → Belongs to one **User**
 - One **Recipe** → Belongs to one **Category**
 - One **Recipe** → Many **Comments**
 - One **Recipe** → Can have many **Edits**
 - One **Recipe** → Can have one **Delete** record (if tracked)
-</details>
+
 
 ---
 
