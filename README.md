@@ -201,30 +201,20 @@ python manage.py collectstatic
 
 ## Testing
 
-### Testing Strategy
-[Describe your overall testing approach]
 
 ### Unit Tests
 [Document unit tests for key components]
 
 ### Integration Tests
-[Document integration tests]
+<details>
+<summary><strong>Integration Tests</strong></summary>
 
-### Running Tests
-```bash
-python manage.py test
-```
+![Integration](.media/testcase_integrations.JPG)
+![Integration](.media/integration-flow.JPG)
 
-### Test Coverage
-[Include test coverage metrics or link to coverage reports]
+</details>
 
-### Key Test Cases
-| Feature | Test Case | Status |
-|---------|-----------|--------|
-| [Feature] | [Test description] | Pass/Fail |
-| [Feature] | [Test description] | Pass/Fail |
 
----
 ## External Testing and Validation
 
 
@@ -284,25 +274,27 @@ python manage.py test
 
 
 ### User Testing
-[Describe user testing sessions conducted]
-- **Number of Testers:** [#]
-- **Test Date:** [Date]
-- **Feedback Summary:** [Key findings]
+During deployment, once the functionality of the website was achieved, I asked a number of individuals to go on, register, add recipes or comments and report back any findings.
 
-### Accessibility Testing
-- **WCAG Compliance Level:** [A, AA, or AAA]
-- **Testing Tools Used:** [e.g., Lighthouse, axe DevTools]
-- **Results:** [Summary of accessibility audit]
+As of today, any issues with uploading images has been resolved, and all the active recipes are user uploaded, and the process as detailed above in the Python test, works from Registering, Viewing, Adding a Recipe, leaving a comment, logging out. 
 
-### Performance Testing
-- **Load Testing Results:** [Include key metrics]
-- **Response Times:** [Document average response times]
-- **Browser Compatibility:** [List tested browsers]
 
-### Security Testing
-[Document security testing and validation]
-- **Penetration Testing:** [Results and findings]
-- **Security Vulnerabilities:** [Document any issues found and resolved]
+#### Recipe Added Success Page
+<details>
+<summary>Click to view Recipe Added Success screenshot</summary>
+
+![Recipe Added Success](./media/recipe_submit.JPG)
+
+
+</details>
+
+#### Logged Out
+<details>
+<summary>Click to view Logged Out screenshot</summary>
+
+![Logged Out](./media/logged-out.JPG)
+
+</details>
 
 ### Feedback & Improvements
 [Summarize feedback received and improvements made based on external testing]
@@ -312,16 +304,9 @@ python manage.py test
 ## Credits and Acknowledgements
 
 ### Project Team
-- **Developer(s):** [Your name/team]
-- **Designer(s):** [Designer name(s)]
-- **Project Manager:** [PM name]
+- **Developer(s):** Richard Duerden
 
-### Technologies & Frameworks
-- Django
-- Python
-- PostgreSQL / SQLite
-- Bootstrap / CSS Framework
-- [Other libraries and tools]
+
 
 ### Third-Party Services
 - [Service 1] - [Purpose]
