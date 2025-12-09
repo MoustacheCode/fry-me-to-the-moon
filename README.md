@@ -88,28 +88,15 @@ This approach guarantees that users can interact with the application effectivel
 ---
 
 ## Entity Relationship Diagram (ERD)
-<details>
-### ER Diagram
-```
-User (id) ───< Recipe (id, title, description, ingredients, instructions, cook_time, category_id, user_id)
-                  │
-                  │───< Comment (id, content, recipe_id, user_id)
-                  │
-                  │───< Edit (id, recipe_id, edited_at, changes)
-                  │
-                  └───< Delete (id, recipe_id, deleted_at, reason)
 
-Category (id, name) ───< Recipe.category_id
+<details>
+<summary><strong>Click to view Entity Relationship Diagram</strong></summary>
+
+![Entity Relationship Diagram](./media/ERD.png)
+
+</details>
 
 ---
-
-### Relationships
-- One **User** → Many **Recipes**
-- One **Recipe** → Belongs to one **User**
-- One **Recipe** → Belongs to one **Category**
-- One **Recipe** → Many **Comments**
-- One **Recipe** → Can have many **Edits**
-- One **Recipe** → Can have one **Delete** record (if tracked)
 
 
 ---
