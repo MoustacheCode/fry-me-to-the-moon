@@ -1,8 +1,7 @@
-<div style="text-align: center; width: 100%;">
 
-![Fry Me to the Moon Header](./media/logo.JPG)
 
-</div>
+                                                 ![Fry Me to the Moon Header](./media/logo.JPG)
+
 
 ## Introduction
 
