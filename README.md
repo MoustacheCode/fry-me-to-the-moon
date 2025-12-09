@@ -88,31 +88,78 @@ This approach guarantees that users can interact with the application effectivel
 ---
 
 ## Entity Relationship Diagram (ERD)
-
-### Database Schema
-[Describe your database structure and key entities]
-
+<details>
 ### ER Diagram
 ```
-[Include ASCII diagram or link to visual diagram]
+User (id) ───< Recipe (id, title, description, ingredients, instructions, cook_time, category_id, user_id)
+                  │
+                  │───< Comment (id, content, recipe_id, user_id)
+                  │
+                  │───< Edit (id, recipe_id, edited_at, changes)
+                  │
+                  └───< Delete (id, recipe_id, deleted_at, reason)
 
-Example:
-+---------+          +-----------+
-| Recipe  |----------|  Comment  |
-+---------+          +-----------+
-    |
-    |
-    v
-+---------+
-|  User   |
-+---------+
-```
+Category (id, name) ───< Recipe.category_id
+</details>
 
-### Key Models
-- **User:** [Description of user model and fields]
-- **Recipe:** [Description of recipe model and fields]
-- **Comment:** [Description of comment model and fields]
-- [Add other models as needed]
+## User
+<details>
+- id (PK)
+</details>
+
+## Recipe
+<details>
+- id (PK)
+- title
+- description
+- ingredients
+- instructions
+- cook_time
+- category_id (FK → Category.id)
+- user_id (FK → User.id)
+</details>
+
+## Category
+<details>
+- id (PK)
+- name
+</details>
+
+## Comment
+<details>
+- id (PK)
+- content
+- recipe_id (FK → Recipe.id)
+- user_id (FK → User.id)
+</details>
+
+## Edit
+<details>
+- id (PK)
+- recipe_id (FK → Recipe.id)
+- edited_at
+- changes
+</details>
+
+## Delete
+<details>
+- id (PK)
+- recipe_id (FK → Recipe.id)
+- deleted_at
+- reason
+</details>
+
+---
+
+### Relationships
+<details>
+- One **User** → Many **Recipes**
+- One **Recipe** → Belongs to one **User**
+- One **Recipe** → Belongs to one **Category**
+- One **Recipe** → Many **Comments**
+- One **Recipe** → Can have many **Edits**
+- One **Recipe** → Can have one **Delete** record (if tracked)
+</details>
 
 ---
 
@@ -121,8 +168,6 @@ Example:
 ### Core Features
 1. **User Authentication**
    - User registration and login
-   - Password reset functionality
-   - User profile management
 
 2. **Recipe Management**
    - Create, read, update, and delete recipes
@@ -131,35 +176,28 @@ Example:
 
 3. **User Interactions**
    - Comment on recipes
-   - Rate recipes
    - Share recipes
 
 4. **Search & Filter**
    - Search recipes by name or ingredients
-   - Filter by category or difficulty level
+   - Filter by category
 
 ### Future Features
-- [List planned features]
-- [List potential enhancements]
+- [Generate the interactive "Cook book" effect so users can feel like they're recipes are found in the traditional method]
+- [Performance enhancements to ensure a smoother experience for the user.]
 
 ---
 
-## AI Implementation
+<details>
+<summary><strong>AI Implementation</strong></summary>
 
-### AI Features
-[Describe any AI/ML features integrated into the application]
+AI was very helpful when it came to building Fry me to the Moon. Treating it as a Senior Developer, asking it the correct questions to guide me to the right outcome.
 
-### Algorithms & Models Used
-[Explain the AI models, algorithms, or services used]
+- Co-Pilot was used to help generate Bootstrap code quickly and efficiently
+- Provided swift suggestions for color matching and styling
+- Generated a Readme Template for me to populate
 
-### Implementation Details
-[Provide technical details about how AI is implemented]
-
-### Performance & Limitations
-[Discuss performance metrics and any limitations of the AI implementation]
-
-### API Integration
-[If using external AI services, document the API integration]
+</details>
 
 ---
 
@@ -168,36 +206,6 @@ Example:
 ### Deployment Platform
 - **Platform:** [e.g., Heroku, AWS, PythonAnywhere, etc.]
 - **Environment:** [Production/Staging details]
-
-### Deployment Steps
-1. [Step 1 - Preparation]
-2. [Step 2 - Building]
-3. [Step 3 - Testing]
-4. [Step 4 - Deployment]
-
-### Environment Variables
-[Document required environment variables]
-```
-DATABASE_URL=
-SECRET_KEY=
-DEBUG=False
-ALLOWED_HOSTS=
-```
-
-### Database Migrations
-```bash
-python manage.py migrate
-```
-
-### Static Files
-```bash
-python manage.py collectstatic
-```
-
-### Maintenance & Monitoring
-[Describe monitoring, logging, and maintenance procedures]
-
----
 
 ## Testing
 
@@ -209,8 +217,8 @@ python manage.py collectstatic
 <details>
 <summary><strong>Integration Tests</strong></summary>
 
-![Integration](.media/testcase_integrations.JPG)
-![Integration](.media/integration-flow.JPG)
+![Integration](./media/testcase_integrations.JPG)
+![Integration](./media/integration-flow.JPG)
 
 </details>
 
@@ -272,6 +280,34 @@ python manage.py collectstatic
 
 </details>
 
+#### HTML & CSS Testing
+<details>
+<summary>Click to view HTML & CSS Testing details</summary>
+
+**HTML Validation:**
+- All pages validated using W3C HTML Validator
+- No critical errors or warnings
+- Semantic HTML5 structure implemented throughout
+
+![HTML](./media/base-validation.JPG)
+
+**CSS Testing:**
+- CSS validated using W3C CSS Validator
+- Cross-browser compatibility tested (Chrome, Firefox, Safari, Edge)
+- Media queries verified for responsive breakpoints
+- Bootstrap 5 framework validation passed
+
+![CSS](./media/css-validation.JPG)
+
+**Accessibility:**
+- WCAG 2.1 compliance verified
+- Color contrast ratios meet AA standards
+- Alt text present on all images
+- Keyboard navigation tested and functional
+
+</details>
+
+
 
 ### User Testing
 During deployment, once the functionality of the website was achieved, I asked a number of individuals to go on, register, add recipes or comments and report back any findings.
@@ -301,35 +337,8 @@ As of today, any issues with uploading images has been resolved, and all the act
 
 ---
 
-## Credits and Acknowledgements
-
-### Project Team
-- **Developer(s):** Richard Duerden
-
-
-
-### Third-Party Services
-- [Service 1] - [Purpose]
-- [Service 2] - [Purpose]
-- [Cloudinary] - Image hosting and management
-
-### Resources & References
-- [Django Documentation](https://docs.djangoproject.com/)
-- [Python Documentation](https://docs.python.org/)
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [Any other resources, tutorials, or references used]
-
-### Special Thanks
-[Thank any mentors, instructors, peers, or community members who contributed to the project]
-
----
-
 ## Getting Started
 
-### Prerequisites
-- Python 3.9+
-- Django 4.0+
-- [Other requirements]
 
 ### Installation
 1. Clone the repository
@@ -339,14 +348,26 @@ As of today, any issues with uploading images has been resolved, and all the act
 5. Run migrations: `python manage.py migrate`
 6. Start the server: `python manage.py runserver`
 
-### Usage
-[Provide instructions on how to use the application]
 
 ---
 
-## License
-[Include license information if applicable]
+## Credits and Acknowledgements
+
+### Project Team
+- **Developer(s):** Richard Duerden
+
+
+
+### Third-Party Services
+- [Cloudinary] - Image hosting and management
+
+### Resources & References
+- [Django Documentation](https://docs.djangoproject.com/)
+- [Python Documentation](https://docs.python.org/)
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [FreeFrontEnd](https://freefrontend.com/css-animated-backgrounds/page/2/)
+
+### Special Thanks
+[Thank you to Code Institute for their guidance and preperation to be able to build this project]
 
 ---
-
-**Last Updated:** December 8, 2025
