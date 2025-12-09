@@ -196,8 +196,58 @@ python manage.py test
 | [Feature] | [Test description] | Pass/Fail |
 
 ---
-
 ## External Testing and Validation
+
+
+#### Recipe List Page
+<details>
+<summary>Click to view Recipe List screenshot</summary>
+
+![Recipe List Page](./media/desktop_home_lighthouse.JPG)
+![Recipe List Page](./media/mobile_home_lighthouse.JPG)
+
+</details>
+
+#### Recipe Details Page
+<details>
+<summary>Click to view Recipe Details screenshot</summary>
+
+![Recipe Details Page](./media/recipe-details.JPG)
+
+</details>
+
+#### Login Page
+<details>
+<summary>Click to view Login screenshot</summary>
+
+![Login Page](./media/login.JPG)
+
+</details>
+
+#### Logout Page
+<details>
+<summary>Click to view Logout screenshot</summary>
+
+![Logout Page](./media/logout.JPG)
+
+</details>
+
+#### Edit Recipe Page
+<details>
+<summary>Click to view Edit Recipe screenshot</summary>
+
+![Edit Recipe Page](./media/edit.JPG)
+
+</details>
+
+#### Delete Recipe Page
+<details>
+<summary>Click to view Delete Recipe screenshot</summary>
+
+![Delete Recipe Page](./media/delete.JPG)
+
+</details>
+
 
 ### User Testing
 [Describe user testing sessions conducted]
