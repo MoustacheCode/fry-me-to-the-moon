@@ -5,7 +5,11 @@
 
 ## Introduction
 
-[Provide a brief overview of your project. Explain what the application does, its main purpose, and who the target users are. Include a high-level description of the problem it solves and key features.]
+Fry Me to the Moon was conceptualised from my enjoyment of jazz and a playful nod to the famous Sinatra classic Fly Me to the Moon. The project combines Music & Food, using the rhythm and improvisation of jazz as inspiration for how I approached building and learning.
+
+Through this project, I explored new tools, experimented with design, and applied agile practices to keep iterating. It reflects not only a sense of humor and imagination, but also my commitment to learning and growing through hands-on experimentation.
+
+The goal is simple: to explore fun ideas, build, and share in a way that feels lighthearted yet structured. Whether it’s experimenting with visuals, testing ideas, or just having fun with code, Fry Me to the Moon is about embracing curiosity and turning my learning experience into something memorable.
 
 ### Project Overview
 - **Project Name:** Fry Me to the Moon
@@ -101,7 +105,19 @@ This approach guarantees that users can interact with the application effectivel
 ## Agile
 
 ### Agile Methodology
-[Describe your agile approach - Scrum, Kanban, etc.]
+I used Github predominantly for this project, using their "issues" & Project board to visualise, manage and maintain workflow. I did however find that I would sometimes Deviate from the project board, or get into a flow and not update accordingly - Something to work on in the future:
+
+- Used a GitHub Project Board to organize tasks visually
+
+- Broke work down into issues and tracked them across columns (To Do → In Progress → Done)
+
+- Updated the board regularly to reflect progress and priorities
+
+- Worked in small, iterative steps rather than one big delivery
+
+- Maintained flexibility by adjusting tasks and priorities as needed
+
+- Ensured transparency of progress through the board’s clear structure
 
 ---
 
