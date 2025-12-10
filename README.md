@@ -43,8 +43,17 @@ The main design rules were to follow the Name of the website, keeping it light a
 
 </details>
 
-### Wireframes & Mockups
-[Include links or descriptions of wireframes and design mockups]
+<details>
+<summary><strong>Wireframes & Mockups</strong></summary>
+
+After realising that I wouldn't be able to achieve an interactive book within the time frame, I pivoted and decided to try and give a "Jazz Restaurant" feeling to the site. The wireframes below show initial conception for the 2 main pages in the project.
+
+![Wireframe 1](./media/wireframe-home.JPG)
+
+![Wireframe 2](./media/wireframe-view.JPG)
+
+</details>
+
 
 ### Color Scheme & Typography
 [Describe the color palette and typography choices]
