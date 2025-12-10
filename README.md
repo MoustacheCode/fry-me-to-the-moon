@@ -29,6 +29,15 @@
 ### Design
 The main design rules were to follow the Name of the website, keeping it light and Jazz themed, adding in an essence of a Jazz Resteraunt. Initially the project was aimed to be a user driven interactive web book, which may be implemented post deadline.
 
+Some of the current features are:
+
+- Animated Nav Bar - Moon effect logo, twinkling stars and animated clouds
+- Recipe Cards clearly depicting the recipe and type of recipe
+- Restaurant style Recipe Card
+- Interactive Polaroid for each Recipe with Hover over
+- "Meal Receipt" Comments board, each comment randomly "placed" down, with Hover over
+- "Flares" softly animated in the background to add effect to the theme
+
 <details>
 <summary><strong>User Stories</strong></summary>
 
@@ -54,9 +63,23 @@ After realising that I wouldn't be able to achieve an interactive book within th
 
 </details>
 
+<details>
+<summary><strong>Color Scheme & Typography</strong></summary>
 
-### Color Scheme & Typography
-[Describe the color palette and typography choices]
+**Color Palette:**
+A lot of colours over all went in to bringing the design to life, but the Core 5 can be viewed below:
+
+![Colors](./media/colors.png)
+
+**Typography:**
+Trying to achieve a classy feel, I used the following fonts:
+
+- Alex Brush
+- Caveat
+- Patrick Hand
+- Quintessential
+
+</details>
 
 ### Responsive Design
 <details>
@@ -129,6 +152,7 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 - Co-Pilot was used to help generate Bootstrap code quickly and efficiently
 - Provided swift suggestions for color matching and styling
 - Generated a Readme Template for me to populate
+- Used in Conjunction with Course Materials for debugging
 
 </details>
 
