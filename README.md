@@ -102,22 +102,20 @@ This approach guarantees that users can interact with the application effectivel
 
 ---
 
-## Agile
+<details>
+<summary><strong>Agile</strong></summary>
 
 ### Agile Methodology
-I used Github predominantly for this project, using their "issues" & Project board to visualise, manage and maintain workflow. I did however find that I would sometimes Deviate from the project board, or get into a flow and not update accordingly - Something to work on in the future:
+I used Github predominantly for this project, using their "issues" & Project board to visualise, manage and maintain workflow. I did however find that I would sometimes deviate from the project board, or get into a flow and not update accordingly - something to work on in the future:
 
 - Used a GitHub Project Board to organize tasks visually
-
 - Broke work down into issues and tracked them across columns (To Do → In Progress → Done)
-
 - Updated the board regularly to reflect progress and priorities
-
 - Worked in small, iterative steps rather than one big delivery
-
 - Maintained flexibility by adjusting tasks and priorities as needed
-
 - Ensured transparency of progress through the board’s clear structure
+
+</details>
 
 ---
 
@@ -174,11 +172,52 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 ---
 
-## Deployment
+<details>
+<summary><strong>Deployment</strong></summary>
 
-### Deployment Platform
-- **Platform:** [e.g., Heroku, AWS, PythonAnywhere, etc.]
-- **Environment:** [Production/Staging details]
+<details>
+<summary><strong>Deployment Platform</strong></summary>
+
+**Platform:** Heroku
+
+**Environment:**
+- **Production:** Live Django application serving end-users. Configured with Gunicorn as the WSGI HTTP server, static files managed via WhiteNoise or AWS S3, and environment variables stored in Heroku Config Vars.
+- **Staging:** Optional environment for testing new features before release. Mirrors production setup but may use smaller dynos or limited add-ons.
+
+</details>
+
+<details>
+<summary><strong>Deployment Process</strong></summary>
+
+- **Version Control:** Source code managed via GitHub.
+- **Integration:** Continuous deployment enabled by connecting the GitHub repository to Heroku. Each push to the main branch triggers an automatic build and deploy.
+- **Buildpacks:** Python buildpack (handles Django dependencies from requirements.txt).
+- **Configuration:**
+   - `Procfile`: `web: gunicorn myproject.wsgi`
+   - `requirements.txt`: Lists Python dependencies (Django, Gunicorn, WhiteNoise, psycopg2, etc.)
+   - `runtime.txt`: Specifies Python version (e.g., python-3.11.6)
+   - **Static Files:** Managed with WhiteNoise or external storage (AWS S3/Cloudinary)
+   - **Database:** Heroku Postgres add-on
+   - **Environment Variables:** Set via Heroku Config Vars (SECRET_KEY, DEBUG, DATABASE_URL)
+
+</details>
+
+<details>
+<summary><strong>Deployment Steps</strong></summary>
+
+1. Initialize Git: `git init && git add . && git commit -m "Initial commit"`
+2. Create Heroku App: `heroku create my-django-app`
+3. Add Postgres Database: `heroku addons:create heroku-postgresql:hobby-dev`
+4. Push to Heroku: `git push heroku main`
+5. Run Migrations: `heroku run python manage.py migrate`
+6. Collect Static Files: `heroku run python manage.py collectstatic`
+7. Open App: `heroku open`
+
+</details>
+
+</details>
+
+---
 
 ## Testing
 
