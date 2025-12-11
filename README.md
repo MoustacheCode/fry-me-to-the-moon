@@ -12,9 +12,11 @@ Through this project, I explored new tools, experimented with design, and applie
 The goal is simple: to explore fun ideas, build, and share in a way that feels lighthearted yet structured. Whether it’s experimenting with visuals, testing ideas, or just having fun with code, Fry Me to the Moon is about embracing curiosity and turning my learning experience into something memorable.
 
 ### Project Overview
+
 - **Project Name:** Fry Me to the Moon
 - **Purpose:** To upload, discover and share your own unique recipes
 - **Target Audience:** Anybody who has an interest in Cooking/Baking
+
 <details>
 <summary><strong>Technologies Used</strong></summary>
 
@@ -31,10 +33,6 @@ The goal is simple: to explore fun ideas, build, and share in a way that feels l
 <details>
 <summary><strong>UX Design</strong></summary>
 
-## UX Design
-
-
-
 ### Design
 The main design rules were to follow the Name of the website, keeping it light and Jazz themed, adding in an essence of a Jazz Resteraunt. Initially the project was aimed to be a user driven interactive web book, which may be implemented post deadline.
 
@@ -46,12 +44,14 @@ Some of the current features are:
 - Interactive Polaroid for each Recipe with Hover over
 - "Meal Receipt" Comments board, each comment randomly "placed" down, with Hover over
 - "Flares" softly animated in the background to add effect to the theme
+
 </details>
 
 <details>
 <summary><strong>User Stories</strong></summary>
 
-[Amongst the user stories located on the Project Board, the below are those that I was able to fulfill within the deadline:]
+**Amongst the user stories located on the Project Board, the below are those that I was able to fulfill within the deadline:**
+
 - As a registered user, I want to upload my own recipe with images so that I can share my creations with the community.
 - As a registered user, I want to edit or delete my recipes so that I can keep my content up to date.
 - As a visitor, I want to view a recipe with ingredients, steps, and cooking time clearly laid out so that I can follow it easily.
@@ -61,6 +61,7 @@ Some of the current features are:
 - As a visitor, I want to navigate recipes easily on mobile and desktop so that I can cook from any device.
 
 </details>
+
 
 <details>
 <summary><strong>Wireframes & Mockups</strong></summary>
@@ -77,11 +78,13 @@ After realising that I wouldn't be able to achieve an interactive book within th
 <summary><strong>Color Scheme & Typography</strong></summary>
 
 **Color Palette:**
+
 A lot of colours over all went in to bringing the design to life, but the Core 5 can be viewed below:
 
 ![Colors](./media/colors.png)
 
 **Typography:**
+
 Trying to achieve a classy feel, I used the following fonts:
 
 - Alex Brush
@@ -91,7 +94,10 @@ Trying to achieve a classy feel, I used the following fonts:
 
 </details>
 
+---
+
 ### Responsive Design
+
 <details>
 <summary><strong>Click to view Responsive Design details</strong></summary>
 
@@ -103,9 +109,12 @@ The application is designed to be fully responsive, ensuring a seamless user exp
 - **Mobile Navigation:** A collapsible navigation menu is implemented for mobile devices, providing easy access to all sections without overwhelming the user.
 
 This approach guarantees that users can interact with the application effectively, whether on a desktop, tablet, or smartphone.
+
 ![Responsive Design Example](./media/responsive.png)
+
 </details>
 
+---
 
 <details>
 <summary><strong>Agile</strong></summary>
@@ -140,6 +149,7 @@ I used Github predominantly for this project, using their "issues" & Project boa
 <summary><strong>Features</strong></summary>
 
 ### Core Features
+
 1. **User Authentication**
    - User registration and login
 
@@ -157,8 +167,9 @@ I used Github predominantly for this project, using their "issues" & Project boa
    - Filter by category
 
 ### Future Features
-- [Generate the interactive "Cook book" effect so users can feel like their recipes are found in the traditional method]
-- [Performance enhancements to ensure a smoother experience for the user.]
+
+- Generate the interactive "Cook book" effect so users can feel like their recipes are found in the traditional method
+- Performance enhancements to ensure a smoother experience for the user
 
 </details>
 
@@ -169,6 +180,8 @@ I used Github predominantly for this project, using their "issues" & Project boa
 
 AI was very helpful when it came to building Fry me to the Moon. Treating it as a Senior Developer, asking it the correct questions to guide me to the right outcome.
 
+**Key Uses:**
+
 - Co-Pilot was used to help generate Bootstrap code quickly and efficiently
 - Provided swift suggestions for color matching and styling
 - Generated a Readme Template for me to populate
@@ -178,8 +191,7 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 ---
 
-
-<summary><strong>Deployment</strong></summary>
+## Deployment
 
 <details>
 <summary><strong>Deployment Platform</strong></summary>
@@ -221,12 +233,9 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 </details>
 
-
-
 ---
 
 ## Testing
-
 
 ### Unit Tests
 <details>
@@ -261,8 +270,6 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 </details>
 
-
-
 ### Integration Tests
 <details>
 <summary><strong>Integration Tests</strong></summary>
@@ -272,9 +279,9 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 </details>
 
+---
 
 ## External Testing and Validation
-
 
 #### Recipe List Page
 <details>
@@ -360,17 +367,16 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 ---
 
 ### User Testing
+
 During deployment, once the functionality of the website was achieved, I asked a number of individuals to go on, register, add recipes or comments and report back any findings.
 
-As of today, any issues with uploading images has been resolved, and all the active recipes are user uploaded, and the process as detailed above in the Python test, works from Registering, Viewing, Adding a Recipe, leaving a comment, logging out. 
-
+As of today, any issues with uploading images has been resolved, and all the active recipes are user uploaded, and the process as detailed above in the Python test, works from Registering, Viewing, Adding a Recipe, leaving a comment, logging out.
 
 #### Recipe Added Success Page
 <details>
 <summary>Click to view Recipe Added Success screenshot</summary>
 
 ![Recipe Added Success](./media/recipe_submit.JPG)
-
 
 </details>
 
@@ -383,12 +389,12 @@ As of today, any issues with uploading images has been resolved, and all the act
 </details>
 
 ### Feedback & Improvements
-[Summarize feedback received and improvements made based on external testing]
+
+Summarize feedback received and improvements made based on external testing
 
 ---
 
 ## Getting Started
-
 
 ### Installation
 1. Clone the repository
@@ -398,20 +404,20 @@ As of today, any issues with uploading images has been resolved, and all the act
 5. Run migrations: `python manage.py migrate`
 6. Start the server: `python manage.py runserver`
 
-
 ---
 
 ## Credits and Acknowledgements
 
 ### Project Team
+
 - **Developer(s):** Richard Duerden
 
-
-
 ### Third-Party Services
-- [Cloudinary] - Image hosting and management
+
+- **Cloudinary** - Image hosting and management
 
 ### Resources & References
+
 - [Django Documentation](https://docs.djangoproject.com/)
 - [Python Documentation](https://docs.python.org/)
 - [MDN Web Docs](https://developer.mozilla.org/)
@@ -419,6 +425,7 @@ As of today, any issues with uploading images has been resolved, and all the act
 - [Eraser.io](https://app.eraser.io/workspace/I2ctBmT5eFPguCVwpBPI)
 
 ### Special Thanks
-[Thank you to Code Institute for their guidance and preperation to be able to build this project]
+
+Thank you to Code Institute for their guidance and preperation to be able to build this project
 
 ---
