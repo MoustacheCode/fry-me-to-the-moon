@@ -33,7 +33,7 @@ The goal is simple: to explore fun ideas, build, and share in a way that feels l
 
 ## UX Design
 
-</details>
+
 
 ### Design
 The main design rules were to follow the Name of the website, keeping it light and Jazz themed, adding in an essence of a Jazz Resteraunt. Initially the project was aimed to be a user driven interactive web book, which may be implemented post deadline.
@@ -46,6 +46,7 @@ Some of the current features are:
 - Interactive Polaroid for each Recipe with Hover over
 - "Meal Receipt" Comments board, each comment randomly "placed" down, with Hover over
 - "Flares" softly animated in the background to add effect to the theme
+</details>
 
 <details>
 <summary><strong>User Stories</strong></summary>
@@ -177,7 +178,7 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 ---
 
-<details>
+
 <summary><strong>Deployment</strong></summary>
 
 <details>
@@ -220,7 +221,7 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 </details>
 
-</details>
+
 
 ---
 
