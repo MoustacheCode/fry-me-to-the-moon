@@ -28,7 +28,12 @@ The goal is simple: to explore fun ideas, build, and share in a way that feels l
 
 ---
 
+<details>
+<summary><strong>UX Design</strong></summary>
+
 ## UX Design
+
+</details>
 
 ### Design
 The main design rules were to follow the Name of the website, keeping it light and Jazz themed, adding in an essence of a Jazz Resteraunt. Initially the project was aimed to be a user driven interactive web book, which may be implemented post deadline.
@@ -100,7 +105,6 @@ This approach guarantees that users can interact with the application effectivel
 ![Responsive Design Example](./media/responsive.png)
 </details>
 
----
 
 <details>
 <summary><strong>Agile</strong></summary>
@@ -131,9 +135,8 @@ I used Github predominantly for this project, using their "issues" & Project boa
 ---
 
 
----
-
-## Features
+<details>
+<summary><strong>Features</strong></summary>
 
 ### Core Features
 1. **User Authentication**
@@ -153,8 +156,10 @@ I used Github predominantly for this project, using their "issues" & Project boa
    - Filter by category
 
 ### Future Features
-- [Generate the interactive "Cook book" effect so users can feel like they're recipes are found in the traditional method]
+- [Generate the interactive "Cook book" effect so users can feel like their recipes are found in the traditional method]
 - [Performance enhancements to ensure a smoother experience for the user.]
+
+</details>
 
 ---
 
@@ -351,7 +356,7 @@ AI was very helpful when it came to building Fry me to the Moon. Treating it as 
 
 </details>
 
-
+---
 
 ### User Testing
 During deployment, once the functionality of the website was achieved, I asked a number of individuals to go on, register, add recipes or comments and report back any findings.
