@@ -176,7 +176,7 @@ I used Github predominantly for this project, using their "issues" & Project boa
 ---
 
 <details>
-<summary><strong>AI Implementation</strong></summary>
+## AI Implementation
 
 AI was very helpful when it came to building Fry me to the Moon. Treating it as a Senior Developer, asking it the correct questions to guide me to the right outcome.
 
