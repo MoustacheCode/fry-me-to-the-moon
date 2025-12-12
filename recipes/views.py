@@ -49,9 +49,9 @@ def recipe_create(request):
     if request.method == "POST":
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            recipe = form.save(commit=False)  # don't save yet
-            recipe.owner = request.user  # set the owner
-            recipe.save()  # now save
+            recipe = form.save(commit=False)
+            recipe.owner = request.user
+            recipe.save()
             return render(
                 request,
                 "recipes/recipe_form.html",
@@ -136,7 +136,7 @@ class RecipeDetailView(DetailView):
 
 class RecipeUpdateView(UpdateView):
     model = Recipe
-    form_class = RecipeForm  # use your custom form
+    form_class = RecipeForm  # use custom form
     template_name = "recipes/recipe_form.html"
     success_url = reverse_lazy("recipe_list")
 

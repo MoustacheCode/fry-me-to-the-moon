@@ -74,7 +74,7 @@ class CommentForm(forms.ModelForm):
         widgets = {
             "text": forms.Textarea(
                 attrs={
-                    "id": "comment-box",  # matches your CSS
+                    "id": "comment-box",  # matches CSS
                     "class": "form-control",  # keep Bootstrap base class
                     "rows": 3,
                     "placeholder": "Leave a comment...",
